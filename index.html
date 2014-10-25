@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />
+	<title>Jobcogneato</title>
+	<link rel="stylesheet" href="styles/main.css" type="text/css"/>
+	<!-- JQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- Parse -->
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+
+	<!-- Sidr -->
+	<link rel="stylesheet" href="src/jquery.sidr.dark.css">
+	<script src="src/jquery.sidr.min.js"></script>
+
+	<!-- LinkedIn -->
+	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+	   api_key: 773og0ol3lmrlw
+	   authorize: true
+	</script>
+</head>
+<body>
+	<div id="sidr">
+	  <!-- Your content -->
+	  <ul>
+	    <li><a href="#" onclick='onLinkedInAuth()'>Contacts</a></li>
+	    <li><a href="#" onclick='toNotifications()'>Notifications</a></li>
+	    <li><a href="#" onclick='toStatus()'>Status</a></li>
+	  </ul>
+	</div>
+	 
+	<script>
+		$(document).ready(function() {
+		  $('#simple-menu').sidr({
+		  	side: 'right'
+		  });
+		});
+	</script>
+
+	<div class="container">
+		<nav>
+			<a href="#" id='logout'>Logout</a>
+			<a id="simple-menu" href="#sidr" style='float: right;'><img src='images/menu.svg'></a>
+		</nav>
+	</div>
+	<div class='container' id='container'>
+		
+	</div>
+	<script type="text/javascript">
+
+		$("#container").load("login.html");
+
+		//---------------------------------------- PARSE CODE ----------------------------------------
+		Parse.initialize("5Wmcy8fD1tEb3xxEyl7nfnDblCGNGsV1r0gBzkve", "ogYIX99AVCaaFO698jxXM3Re67DF05FevHRzRzvw");
+
+		var userId = '';
+		var userObjectId = '';
+		var innerCircleList = [];
+
+	    //---------------------------------------- LinkedIn CODE ----------------------------------------
+		function onLinkedInAuth() {
+
+			IN.API.Profile("me")
+			    .fields(["id", "firstName", "lastName"])
+			    .result(function(result) {
+			      addToDatabase(result.values[0]);
+			    })
+			    .error(function(err) {
+			      alert(err);
+			    });
+			    $.sidr('close', 'sidr');
+
+			function addToDatabase (profile) {
+				
+				window.userId = profile.id;
+				var User = Parse.Object.extend("users");
+				var query = new Parse.Query(User);
+				query.equalTo("userId", profile.id);
+				query.find({
+					success: function(results) {
+						if (results.length == 0){
+
+							var User = Parse.Object.extend("users");
+							var user = new User();
+
+							user.set('userId', profile.id);
+							user.set('fname', profile.firstName);
+							user.set('lname', profile.lastName);
+							user.set('status', 'Happy With Current Job');
+							user.set('bStatus', 'Happy With Current Job');
+
+							user.save();
+						}
+						window.userObjectId = results[0].id;
+						window.innerCircleList = results[0].get('innerCircle');
+						console.log(window.innerCircleList);
+						//console.log(window.userObjectId);
+						displayInnerCircle();	
+					}
+				})
+			}
+
+			IN.API.Connections("me")
+				.fields("firstName", "lastName", "industry", "pictureUrl", "id")
+				.result(displayConnections)
+				.error(displayConnectionsErrors);
+				document.getElementById('logout').addEventListener('click', logOut);
+
+				
+		}
+
+		function logOut () {
+			IN.User.logout();
+			$("#container").load("login.html");
+		}
+
+		function displayNotifications() {
+			//console.log(window.userObjectId);
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.get(window.userObjectId,{
+				success: function(user){
+
+					//console.log(user.get('notifications')[0]);
+					for (var i = 0; i < user.get('notifications').length; i++){
+						IN.API.Profile(user.get('notifications')[i]).result(populateNotifications);
+						console.log('TEST');
+					}
+				},
+			});
+		}
+
+		function populateNotifications(profiles){
+			var member = profiles.values[0];
+
+			var notificationsDiv = document.getElementById("notifications");
+			notificationsDiv.innerHTML += '<p><a href="#" onclick="addToInnerCircle('+ "'" + member.id + "'" +')">Allow '+ member.firstName + ' ' + member.lastName +' to add you to their Inner Circle</a></p>';
+		}
+
+		function displayInnerCircle() {
+
+
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.get(window.userObjectId,{
+				success: function(user){
+
+					for (var i = 0; i < user.get('innerCircle').length; i++){
+						IN.API.Profile(user.get('innerCircle')[i]).result(populateInnerCircle);
+					}
+					
+				},
+			});
+		}
+		function populateInnerCircle(profiles){
+			var member = profiles.values[0];
+			var pictureUrl = member.pictureUrl || "images/anon.png";
+			var innerCircleDiv = document.getElementById("innerCircle");
+			
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.equalTo("userId", member.id);
+			query.find({
+				success: function (results) {
+					var memberStatus = results[0].get('status');
+					innerCircleDiv.innerHTML += "<div class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p><p class='innerStatus'>" + memberStatus + "</p></div></div>";
+				}
+			})
+
+			
+		}
+
+		function addToInnerCircle(memberId) {
+			console.log(memberId);
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.equalTo("userId", memberId);
+			query.find({
+				success: function (results){
+					var object = results[0];
+					var User = Parse.Object.extend("users");
+					var query = new Parse.Query(User);
+					query.get(object.id,{
+						success: function(user){
+							user.addUnique('innerCircle', window.userId);
+
+							user.save();
+
+							toNotifications();
+						}
+					});
+			}
+			});
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.get(window.userObjectId,{
+				success: function(user){
+					user.remove('notifications', memberId);
+
+					user.save();
+				}
+			});
+		}
+
+		function toNotifications(){
+			$("#container").load("notifications.html", function(){
+				displayNotifications();
+			});
+			$.sidr('close', 'sidr');
+		}
+		function toStatus(){
+			$("#container").load("status.html");
+			$.sidr('close', 'sidr');
+		}
+
+		function displayConnections(connections) {
+
+		  $("#container").load("connections.html", function(){
+		  		var connectionsDiv = document.getElementById("connections");
+
+		  var members = connections.values; // The list of members you are connected to
+		  for (	 member in members) {
+		  	if (members[member].firstName != 'private'){
+		  		var contains = false;
+		  		
+		  		for (var i = 0; i < window.innerCircleList.length; i++){
+		  			if (window.innerCircleList[i] === members[member].id){
+		  				contains = true;
+		  			}
+		  		}
+		  		if (contains == false){
+		  			var memberStatus = '';
+		  			
+		  			var User = Parse.Object.extend("users");
+					var query = new Parse.Query(User);
+					query.equalTo("userId", members[member].id);
+					query.find({
+						success: function (results) {
+							if (results.length > 0){
+								memberStatus = results[0].get('bStatus');
+
+							}
+							
+						}
+					})	 
+
+					var pictureUrl = members[member].pictureUrl || "images/anon.png";
+		  			connectionsDiv.innerHTML += "<div class='connection'><img src='" + pictureUrl + "'><div class='connectionInfo'><p class='connectionName'>" + members[member].firstName + " " + members[member].lastName
+		     +"</p><p>" + memberStatus + "</p></div><a href='#' id='" + members[member].id + "' onclick='addToInner("+'"'+ members[member].id +'","'+members[member].firstName+'","'+members[member].lastName+'"'+ ")'>+</a></div>";
+		  		}
+		  	}
+		  }   
+		  });
+		    
+		}
+
+		function displayConnectionsErrors(error) { /* do nothing */ }
+
+		function addToInner (memberId,fname,lname){
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.equalTo("userId", memberId);
+			query.find({
+				success: function(results) {
+					if (results.length == 0){
+
+						var User = Parse.Object.extend("users");
+						var user = new User();
+
+						user.set('userId', memberId);
+						user.set('fname', fname);
+						user.set('lname', lname);
+						user.set('status', 'Happy With Current Job');
+						user.set('bStatus', 'Happy With Current Job');
+						user.addUnique('notifications', window.userId);
+
+						user.save();
+					}
+					else if (results.length == 1){
+						var object = results[0];
+						var User = Parse.Object.extend("users");
+						var query = new Parse.Query(User);
+						query.get(object.id,{
+							success: function(user){
+								user.addUnique('notifications', window.userId);
+
+								user.save();
+							}
+						});
+					}
+					else{
+						console.log('ERROR');
+					}
+				}
+			})
+			
+		}
+
+		function setStatus (status) {
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.get(window.userObjectId,{
+				success: function(user){
+					user.set('status', status);
+
+					user.save();
+				},
+			});
+		}
+
+		function contactsSwap(list) {
+			if (list === 'inner'){
+				document.getElementById('inner').className = 'active';
+				document.getElementById('business').className = '';
+				document.getElementById('innerCircle').style.display = 'block';
+				document.getElementById('connections').style.display = 'none';
+;
+			}
+			else if (list === 'business') {
+				document.getElementById('business').className = 'active';
+				document.getElementById('inner').className = '';
+				document.getElementById('connections').style.display = 'block';
+				document.getElementById('innerCircle').style.display ='none';
+			}
+
+		}
+
+	</script>
+</body>
