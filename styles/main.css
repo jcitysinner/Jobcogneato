@@ -26,6 +26,8 @@
 }
 body {
   background-color: #383838;
+  padding: 0;
+  margin: 0;
 }
 div#connections {
   display: none;
@@ -38,6 +40,21 @@ div.container {
   width: 100%;
   max-width: 1170px;
   margin: auto;
+}
+nav {
+  background-color: #222;
+  padding: 10px;
+  overflow: hidden;
+}
+nav a {
+  color: #fff;
+  vertical-align: sub;
+}
+nav a img {
+  height: 35px;
+}
+nav a#simple-menu {
+  line-height: 0;
 }
 div.connection {
   padding: 10px 5px;
@@ -107,11 +124,11 @@ div#contactsNav {
 }
 div#contactsNav a {
   display: inline-block;
-  width: 49.8%;
+  width: 49.5%;
   margin: 0;
   padding: 15px 0;
   text-align: center;
-  font-size: 28px;
+  font-size: 26px;
   text-decoration: none;
   transition: all 0.3s;
   font-family: antonio-bold;
@@ -123,4 +140,51 @@ div#contactsNav a:hover {
 div#contactsNav a.active {
   background-color: #ffffff;
   color: #383838;
+}
+div#setStatus h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 20px;
+  margin-top: 15px;
+}
+div#setStatus h3 {
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  color: white;
+  margin-top: 5px;
+  text-align: center;
+  width: 155px;
+  font-size: 32px;
+  margin: 5px auto 25px;
+  text-transform: uppercase;
+}
+div#setStatus a {
+  display: block;
+  width: 100%;
+  padding: 30px 0;
+  text-align: center;
+  text-decoration: none;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  margin: 0;
+}
+div#setStatus a img {
+  width: 75px;
+  margin-bottom: 15px;
+}
+div#setStatus a#looking:hover,
+div#setStatus a#looking.active {
+  color: #fff;
+  background-color: #31eccb;
+}
+div#setStatus a#interest:hover,
+div#setStatus a#interest.active {
+  color: #fff;
+  background-color: #eed609;
+}
+div#setStatus a#happy:hover,
+div#setStatus a#happy.active {
+  color: #fff;
+  background-color: #ec7331;
 }
