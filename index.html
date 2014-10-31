@@ -57,6 +57,7 @@
 		var userId = '';
 		var userObjectId = '';
 		var innerCircleList = [];
+		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
 
 	    //---------------------------------------- LinkedIn CODE ----------------------------------------
 		function onLinkedInAuth() {
@@ -87,8 +88,7 @@
 							user.set('userId', profile.id);
 							user.set('fname', profile.firstName);
 							user.set('lname', profile.lastName);
-							user.set('status', 'Happy With Current Job');
-							user.set('bStatus', 'Happy With Current Job');
+							user.set('status', '0');
 
 							user.save();
 						}
@@ -167,7 +167,7 @@
 			query.find({
 				success: function (results) {
 					var memberStatus = results[0].get('status');
-					innerCircleDiv.innerHTML += "<div class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p><p class='innerStatus'>" + memberStatus + "</p></div></div>";
+					innerCircleDiv.innerHTML += "<div class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'</div>";
 				}
 			})
 
@@ -276,8 +276,7 @@
 						user.set('userId', memberId);
 						user.set('fname', fname);
 						user.set('lname', lname);
-						user.set('status', 'Happy With Current Job');
-						user.set('bStatus', 'Happy With Current Job');
+						user.set('status', '0');
 						user.addUnique('notifications', window.userId);
 
 						user.save();
@@ -310,6 +309,24 @@
 					user.set('status', status);
 
 					user.save();
+					if (status === 0){
+						console.log('TEST STATUS');
+						document.getElementById('looking').className = 'active';
+						document.getElementById('interest').className = '';
+						document.getElementById('happy').className = '';
+					} else if (status === 1){
+						console.log('TEST STATUS');
+						document.getElementById('looking').className = '';
+						document.getElementById('interest').className = 'active';
+						document.getElementById('happy').className = '';
+
+					} else if (status === 2){
+						console.log('TEST STATUS');
+						document.getElementById('looking').className = '';
+						document.getElementById('interest').className = '';
+						document.getElementById('happy').className = 'active';
+
+					}
 				},
 			});
 		}

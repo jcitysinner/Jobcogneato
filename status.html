@@ -1,6 +1,33 @@
 <div id='setStatus'>
-			<h2>Set Your Status For<br></h2><h3>Inner Circle</h3>
-			<a id='looking' href="#" onclick="setStatus('Looking for a new job')"><img src='images/eye.png'><br>Looking for a new job</a>
-			<a id='interest' href="#" onclick="setStatus('Interested in new possibilities')"><img src='images/ear.png'><br>Interested in new possibilites</a>
-			<a id='happy' href="#" onclick="setStatus('Happy with current job')"><img src='images/happy.png'><br>Happy with current job</a>
-		</div>
+	<h2>Set Your Status For<br></h2><h3>Inner Circle</h3>
+	<a id='looking' href="#" onclick="setStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
+	<a id='interest' href="#" onclick="setStatus(1)"><img src='images/ear.png'><br>Interested in new possibilites</a>
+	<a id='happy' href="#" onclick="setStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+</div>
+<script>
+	var User = Parse.Object.extend("users");
+	var query = new Parse.Query(User);
+	query.get(window.userObjectId,{
+		success: function(user){
+			var status = user.get('status');
+			if (status === 0){
+				console.log('TEST STATUS');
+				document.getElementById('looking').className = 'active';
+				document.getElementById('interest').className = '';
+				document.getElementById('happy').className = '';
+			} else if (status === 1){
+				console.log('TEST STATUS');
+				document.getElementById('looking').className = '';
+				document.getElementById('interest').className = 'active';
+				document.getElementById('happy').className = '';
+
+			} else if (status === 2){
+				console.log('TEST STATUS');
+				document.getElementById('looking').className = '';
+				document.getElementById('interest').className = '';
+				document.getElementById('happy').className = 'active';
+
+			}
+		},
+	});
+</script>

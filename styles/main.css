@@ -41,10 +41,17 @@ div.container {
   max-width: 1170px;
   margin: auto;
 }
+div#container {
+  padding-top: 60px;
+}
 nav {
   background-color: #222;
   padding: 10px;
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  max-width: 1170px;
+  margin: auto;
 }
 nav a {
   color: #fff;
@@ -93,6 +100,7 @@ div.connection a:hover {
   background: #fff;
 }
 div.innerConnection {
+  position: relative;
   padding: 10px 5px 5px;
   border-bottom: 1px solid #8d8d8d;
 }
@@ -109,9 +117,9 @@ div.innerConnection div.innerConnectionInfo p.innerName {
   margin: 0;
   font-size: 27px;
 }
-div.innerConnection div.innerConnectionInfo p.innerStatus {
-  font-size: 19px;
-  margin: 0;
+div.innerConnection img.innerStatusIcon {
+  float: right;
+  width: 80px;
 }
 div#contactsNav {
   width: 100%;
