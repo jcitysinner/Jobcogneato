@@ -29,6 +29,50 @@ body {
   padding: 0;
   margin: 0;
 }
+div#blocker {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+div#messageBox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  height: 300px;
+  clear: both;
+  background: #111;
+  border-radius: 10px;
+  border: solid 1px #8d8d8d;
+  padding: 15px;
+}
+div#messageBox textarea {
+  width: 100%;
+}
+div#messageBox div#messageButtons {
+  text-align: center;
+  margin-top: 25px;
+}
+div#messageBox div#messageButtons a {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  background: #8d8d8d;
+  border: solid 1px #222;
+  color: #222;
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: none;
+}
 div#connections {
   display: none;
   padding-bottom: 80px;
@@ -120,6 +164,24 @@ div.innerConnection div.innerConnectionInfo p.innerName {
 div.innerConnection img.innerStatusIcon {
   float: right;
   width: 80px;
+}
+div.innerConnection div.innerButtons {
+  padding: 15px 0;
+  text-align: center;
+}
+div.innerConnection div.innerButtons a {
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+  border: solid 1px #8d8d8d;
+  background-color: #222;
+  text-decoration: none;
+  font-size: 14px;
+  width: 40%;
+  margin: 0 2%;
+}
+div.innerConnection div.innerButtons a:hover {
+  background-color: #111;
 }
 div#contactsNav {
   width: 100%;

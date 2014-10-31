@@ -167,11 +167,37 @@
 			query.find({
 				success: function (results) {
 					var memberStatus = results[0].get('status');
-					innerCircleDiv.innerHTML += "<div class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'</div>";
+					innerCircleDiv.innerHTML += "<div class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Send to Business Class</a></div></div>";
 				}
 			})
 
 			
+		}
+
+		function removeInner (memberId) {
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.get(window.userObjectId,{
+				success: function(user){
+					console.log(memberId);
+					user.remove('innerCircle', memberId);
+					user.save();
+					onLinkedInAuth();
+					
+				},
+			});
+
+		}
+
+		function sendMessage (memberId) {
+
+			$('body').append('<div id="blocker"><div id="messageBox"><h1>Send a Message</h1><textarea></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Close</a><a href="#" onclick="closeMessage()">Send</a></div></div></div>');
+
+		}
+
+		function closeMessage () {
+			$('#blocker').remove();
 		}
 
 		function addToInnerCircle(memberId) {
