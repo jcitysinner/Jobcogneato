@@ -167,7 +167,7 @@
 			query.find({
 				success: function (results) {
 					var memberStatus = results[0].get('status');
-					innerCircleDiv.innerHTML += "<div class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Send to Business Class</a></div></div>";
+					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Send to Business Class</a></div></div>";
 				}
 			})
 
@@ -183,7 +183,8 @@
 					console.log(memberId);
 					user.remove('innerCircle', memberId);
 					user.save();
-					onLinkedInAuth();
+					//onLinkedInAuth();
+					$('#' + memberId).slideToggle();
 					
 				},
 			});
@@ -277,7 +278,7 @@
 					})	 
 
 					var pictureUrl = members[member].pictureUrl || "images/anon.png";
-		  			connectionsDiv.innerHTML += "<div class='connection'><img src='" + pictureUrl + "'><div class='connectionInfo'><p class='connectionName'>" + members[member].firstName + " " + members[member].lastName
+		  			connectionsDiv.innerHTML += "<div id='"+ members[member].id +"' class='connection'><img src='" + pictureUrl + "'><div class='connectionInfo'><p class='connectionName'>" + members[member].firstName + " " + members[member].lastName
 		     +"</p><p>" + memberStatus + "</p></div><a href='#' id='" + members[member].id + "' onclick='addToInner("+'"'+ members[member].id +'","'+members[member].firstName+'","'+members[member].lastName+'"'+ ")'>+</a></div>";
 		  		}
 		  	}
@@ -302,26 +303,46 @@
 						user.set('userId', memberId);
 						user.set('fname', fname);
 						user.set('lname', lname);
-						user.set('status', '0');
-						user.addUnique('notifications', window.userId);
+						user.set('status', 0);
+						//user.addUnique('notifications', window.userId);
 
 						user.save();
 					}
 					else if (results.length == 1){
-						var object = results[0];
-						var User = Parse.Object.extend("users");
-						var query = new Parse.Query(User);
-						query.get(object.id,{
-							success: function(user){
-								user.addUnique('notifications', window.userId);
+						// var object = results[0];
+						// var User = Parse.Object.extend("users");
+						// var query = new Parse.Query(User);
+						// query.get(object.id,{
+						// 	success: function(user){
+						// 		user.addUnique('notifications', window.userId);
 
-								user.save();
-							}
-						});
+						// 		user.save();
+						// 	}
+						// });
 					}
 					else{
 						console.log('ERROR');
 					}
+
+					var User = Parse.Object.extend("users");
+					var query = new Parse.Query(User);
+					query.get(window.userObjectId,{
+						success: function(user){
+							console.log('ADDING USER')
+							user.addUnique('innerCircle', memberId);
+
+							user.save();
+							console.log($('#' + memberId));
+							$('#' + memberId).html('<p>Added to Inner Circle!</p>');
+
+							setTimeout(function(){
+								$('#' + memberId).slideToggle();
+							}, 500);
+
+						},
+					});
+
+
 				}
 			})
 			
@@ -359,10 +380,13 @@
 
 		function contactsSwap(list) {
 			if (list === 'inner'){
-				document.getElementById('inner').className = 'active';
-				document.getElementById('business').className = '';
-				document.getElementById('innerCircle').style.display = 'block';
-				document.getElementById('connections').style.display = 'none';
+
+				onLinkedInAuth();
+
+				// document.getElementById('inner').className = 'active';
+				// document.getElementById('business').className = '';
+				// document.getElementById('innerCircle').style.display = 'block';
+				// document.getElementById('connections').style.display = 'none';
 ;
 			}
 			else if (list === 'business') {
