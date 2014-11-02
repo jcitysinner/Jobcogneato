@@ -97,6 +97,7 @@ nav {
   max-width: 1170px;
   margin: auto;
   z-index: 100;
+  display: none;
 }
 nav a {
   color: #fff;
@@ -178,7 +179,7 @@ div.innerConnection div.innerButtons a {
   background-color: #222;
   text-decoration: none;
   font-size: 14px;
-  width: 40%;
+  width: 25%;
   margin: 0 2%;
 }
 div.innerConnection div.innerButtons a:hover {
