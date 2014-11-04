@@ -101,8 +101,8 @@
 							user.save();
 						}
 						window.userObjectId = results[0].id;
-						window.innerCircleList = results[0].get('innerCircle');
-						window.trueCircleList = results[0].get('trueCircle');
+						window.innerCircleList = results[0].get('innerCircle') || [];
+						window.trueCircleList = results[0].get('trueCircle') || [];
 						console.log(window.innerCircleList);
 						//console.log(window.userObjectId);
 						displayInnerCircle();	
@@ -152,23 +152,22 @@
 
 
 
-			var User = Parse.Object.extend("users");
-			var query = new Parse.Query(User);
-			query.get(window.userObjectId,{
-				success: function(user){
-
-					for (var i = 0; i < user.get('innerCircle').length; i++){
-						IN.API.Profile(user.get('innerCircle')[i]).result(populateInnerCircle);
+			// var User = Parse.Object.extend("users");
+			// var query = new Parse.Query(User);
+			// query.get(window.userObjectId,{
+			// 	success: function(user){
+					console.log(window.innerCircleList);
+					for (var i = 0; i < window.innerCircleList.length; i++){
+						IN.API.Profile(window.innerCircleList[i]).result(populateInnerCircle);
 					}
 					
-				},
-			});
+			// 	},
+			// });
 		}
 		function populateInnerCircle(profiles){
 			var member = profiles.values[0];
 			var pictureUrl = member.pictureUrl || "images/anon.png";
 			var innerCircleDiv = document.getElementById("innerCircle");
-			
 
 			var User = Parse.Object.extend("users");
 			var query = new Parse.Query(User);
@@ -310,6 +309,10 @@
 		     +"</p><p>" + memberStatus + "</p></div><a href='#' id='" + members[member].id + "' onclick='addToInner("+'"'+ members[member].id +'","'+members[member].firstName+'","'+members[member].lastName+'"'+ ")'>+</a></div>";
 		  		}
 		  	}
+		  }
+
+		  if (window.innerCircleList.length <= 0){
+		  	document.getElementById('innerCircle').innerHTML += '<p class="noInnerList">You don&#146;t have anyone in your Inner Circle. Click on Business Class below to see you LinkedIn conncections and add some to your Inner Circle!</p>';
 		  }   
 		  });
 		    
