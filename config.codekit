@@ -44,6 +44,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/contacts.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1969,
+		"inputAbbreviatedPath": "\/images\/contacts.png",
+		"outputAbbreviatedPath": "\/images\/contacts.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/ear.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -121,13 +132,24 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/Untitled-3.png": {
+	"\/images\/logout.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 2531,
-		"inputAbbreviatedPath": "\/images\/Untitled-3.png",
-		"outputAbbreviatedPath": "\/images\/Untitled-3.png",
+		"initialSize": 1889,
+		"inputAbbreviatedPath": "\/images\/logout.png",
+		"outputAbbreviatedPath": "\/images\/logout.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/notifications.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1441,
+		"inputAbbreviatedPath": "\/images\/notifications.png",
+		"outputAbbreviatedPath": "\/images\/notifications.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
