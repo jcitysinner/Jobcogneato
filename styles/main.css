@@ -14,13 +14,11 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
+  text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
 }
@@ -86,7 +84,7 @@ div.container {
   margin: auto;
 }
 div#container {
-  padding-top: 60px;
+  padding-top: 30px;
 }
 nav {
   background-color: #222;
@@ -127,18 +125,21 @@ div.connection div.connectionInfo {
 div.connection div.connectionInfo p.connectionName {
   margin: 0;
   font-size: 27px;
+  padding: 20px 0 0 10px;
+  text-transform: none;
 }
 div.connection a {
   display: block;
-  width: 80px;
-  height: 80px;
-  background: #8d8d8d;
+  width: 65px;
+  height: 65px;
+  border: solid 2px #8d8d8d;
   border-radius: 50%;
-  color: #383838;
+  color: #8d8d8;
   float: right;
   text-decoration: none;
   font-size: 45px;
   text-align: center;
+  margin-top: 5px;
   vertical-align: middle;
   transition: all 0.2s;
 }
@@ -196,14 +197,16 @@ div#contactsNav {
 }
 div#contactsNav a {
   display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   width: 49.5%;
   margin: 0;
   padding: 15px 0;
   text-align: center;
-  font-size: 26px;
+  font-size: 27px;
   text-decoration: none;
   transition: all 0.3s;
-  font-family: antonio-bold;
+  font-family: antonio-regular, helvetica, arial, sans-serif;
 }
 div#contactsNav a:hover {
   background-color: #ffffff;
@@ -213,28 +216,40 @@ div#contactsNav a.active {
   background-color: #ffffff;
   color: #383838;
 }
+div#setStatus {
+  background: url(../images/bg.png);
+}
+div#setStatus .innerStatus {
+  background: url(../images/city.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  height: 200px;
+}
 div#setStatus h2 {
   text-align: center;
   text-transform: uppercase;
   margin: 0;
-  font-size: 20px;
-  margin-top: 15px;
+  font-size: 1.3em;
+  padding-top: 62px;
+  letter-spacing: 3px;
+  color: #222222;
 }
 div#setStatus h3 {
   border-top: 3px solid #fff;
   border-bottom: 3px solid #fff;
   color: white;
-  margin-top: 5px;
   text-align: center;
-  width: 155px;
-  font-size: 32px;
-  margin: 5px auto 25px;
+  width: 233px;
+  font-size: 2.2em;
+  letter-spacing: 2px;
+  margin: 6px auto 0;
   text-transform: uppercase;
 }
 div#setStatus a {
   display: block;
   width: 100%;
-  padding: 30px 0;
+  padding: 10px 0;
   text-align: center;
   text-decoration: none;
   border-top: solid 1px #fff;
@@ -242,8 +257,8 @@ div#setStatus a {
   margin: 0;
 }
 div#setStatus a img {
-  width: 75px;
-  margin-bottom: 15px;
+  width: 100px;
+  margin-bottom: 5px;
 }
 div#setStatus a#looking:hover,
 div#setStatus a#looking.active {
