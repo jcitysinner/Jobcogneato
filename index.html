@@ -82,7 +82,8 @@
 
 			function addToDatabase (profile) {
 				
-				window.userId = profile.id;
+				$("#container").load("connections.html", function(){
+					window.userId = profile.id;
 				var User = Parse.Object.extend("users");
 				var query = new Parse.Query(User);
 				query.equalTo("userId", profile.id);
@@ -109,14 +110,17 @@
 						displayInnerCircle();	
 					}
 				})
-			}
+			
 
 			IN.API.Connections("me")
 				.fields("firstName", "lastName", "industry", "pictureUrl", "id")
 				.result(displayConnections)
 				.error(displayConnectionsErrors);
 				document.getElementById('logout').addEventListener('click', logOut);
+				});
 
+				
+			}
 				
 		}
 
@@ -276,7 +280,7 @@
 
 		function displayConnections(connections) {
 
-		  $("#container").load("connections.html", function(){
+		  //$("#container").load("connections.html", function(){
 		  		var connectionsDiv = document.getElementById("connections");
 
 		  var members = connections.values; // The list of members you are connected to
@@ -315,7 +319,7 @@
 		  if (window.innerCircleList.length <= 0){
 		  	document.getElementById('innerCircle').innerHTML += '<p class="noInnerList">You don&#146;t have anyone in your Inner Circle. Click on Business Class below to see you LinkedIn conncections and add some to your Inner Circle!</p>';
 		  }   
-		  });
+		  //});
 		    
 		}
 
