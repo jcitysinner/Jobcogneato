@@ -1,17 +1,32 @@
 <div id='setStatus'>
+
 	<div class="innerStatus">
-		<h2>Set Your Status For:<br></h2><h3>Circle of Trust</h3>
+		<h2>Set Your Status For:<br></h2><h3>Global Status</h3>
 	</div>
 	<a id='looking' href="#" onclick="setStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
 	<a id='interest' href="#" onclick="setStatus(1)"><img src='images/ear.png'><br>Interested in new possibilites</a>
 	<a id='happy' href="#" onclick="setStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+
+	<div class="trueStatus">
+		<h2>Set Your Status For:<br></h2><h3>True Status</h3>
+	</div>
+	<a id='lookingTrue' href="#" onclick="setTrueStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
+	<a id='interestTrue' href="#" onclick="setTrueStatus(1)"><img src='images/ear.png'><br>Interested in new possibilites</a>
+	<a id='happyTrue' href="#" onclick="setTrueStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+
 </div>
 <script>
+
+	$('a').click(function(event){
+    	event.preventDefault();
+    })
+
 	var User = Parse.Object.extend("users");
 	var query = new Parse.Query(User);
 	query.get(window.userObjectId,{
 		success: function(user){
 			var status = user.get('status');
+			var trueStatus = user.get('trueStatus');
 			if (status === 0){
 				//console.log('TEST STATUS');
 				// document.getElementById('looking').className = 'active';
@@ -42,6 +57,39 @@
 				$('#looking img').attr('src', 'images/eye.png');
 				$('#interest img').attr('src', 'images/ear.png');
 				$('#happy img').attr('src', 'images/happyActive.png');
+
+			}
+
+			if (trueStatus === 0){
+				//console.log('TEST STATUS');
+				// document.getElementById('looking').className = 'active';
+				// document.getElementById('interest').className = '';
+				// document.getElementById('happy').className = '';
+
+				//NEED TO IMPLEMENT IMAGE CHANGES
+				$('#lookingTrue img').attr('src', 'images/eyeActive.png');
+				$('#interestTrue img').attr('src', 'images/ear.png');
+				$('#happy imgTrue').attr('src', 'images/happy.png');
+
+			} else if (trueStatus === 1){
+				// console.log('TEST STATUS');
+				// document.getElementById('looking').className = '';
+				// document.getElementById('interest').className = 'active';
+				// document.getElementById('happy').className = '';
+
+				$('#lookingTrue img').attr('src', 'images/eye.png');
+				$('#interestTrue img').attr('src', 'images/earActive.png');
+				$('#happyTrue img').attr('src', 'images/happy.png');
+
+			} else if (trueStatus === 2){
+				// console.log('TEST STATUS');
+				// document.getElementById('looking').className = '';
+				// document.getElementById('interest').className = '';
+				// document.getElementById('happy').className = 'active';
+
+				$('#lookingTrue img').attr('src', 'images/eye.png');
+				$('#interestTrue img').attr('src', 'images/ear.png');
+				$('#happyTrue img').attr('src', 'images/happyActive.png');
 
 			}
 		},

@@ -243,12 +243,15 @@ div#contactsNav{
 
 div#setStatus{
 	background:url(../images/bg.png);
-	.innerStatus{
+	text-align: center;
+	.innerStatus, .trueStatus{
 		background:url(../images/city.jpg);
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position:bottom center;
 		height:200px;
+				border-top: solid 1px #fff;
+		border-bottom: solid 1px #fff;
 	}
 	h2{
 		text-align: center;
@@ -271,13 +274,12 @@ div#setStatus{
 		text-transform: uppercase;
 		}
 	a{
-		display: block;
-		width: 100%;
+		display: inline-block;
+		width: 32%;
 		padding: 10px 0;
 		text-align: center;
 		text-decoration: none;
-		border-top: solid 1px #fff;
-		border-bottom: solid 1px #fff;
+
 		margin: 0;
 		transition: all 0.3s;
 		img{

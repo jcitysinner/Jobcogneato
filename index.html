@@ -68,7 +68,10 @@
 		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
 
 	    //---------------------------------------- LinkedIn CODE ----------------------------------------
+		
+
 		function onLinkedInAuth() {
+
 			$('nav').show();
 			IN.API.Profile("me")
 			    .fields(["id", "firstName", "lastName"])
@@ -198,6 +201,10 @@
 					} else {
 						$('div#' + member.id + ' a.hideTrue').hide();
 					}
+
+					$('a').click(function(event){
+				    	event.preventDefault();
+				    })
 
 
 				}
@@ -422,6 +429,49 @@
 						$('#looking img').attr('src', 'images/eye.png');
 						$('#interest img').attr('src', 'images/ear.png');
 						$('#happy img').attr('src', 'images/happyActive.png');
+
+					}
+				},
+			});
+		}
+
+		function setTrueStatus(status){
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.get(window.userObjectId,{
+				success: function(user){
+					user.set('trueStatus', status);
+
+					user.save();
+					if (status === 0){
+						// console.log('TEST STATUS');
+						// document.getElementById('looking').className = 'active';
+						// document.getElementById('interest').className = '';
+						// document.getElementById('happy').className = '';
+
+						$('#lookingTrue img').attr('src', 'images/eyeActive.png');
+						$('#interestTrue img').attr('src', 'images/ear.png');
+						$('#happyTrue img').attr('src', 'images/happy.png');
+
+					} else if (status === 1){
+						// console.log('TEST STATUS');
+						// document.getElementById('looking').className = '';
+						// document.getElementById('interest').className = 'active';
+						// document.getElementById('happy').className = '';
+
+						$('#lookingTrue img').attr('src', 'images/eye.png');
+						$('#interestTrue img').attr('src', 'images/earActive.png');
+						$('#happyTrue img').attr('src', 'images/happy.png');
+
+					} else if (status === 2){
+						// console.log('TEST STATUS');
+						// document.getElementById('looking').className = '';
+						// document.getElementById('interest').className = '';
+						// document.getElementById('happy').className = 'active';
+
+						$('#lookingTrue img').attr('src', 'images/eye.png');
+						$('#interestTrue img').attr('src', 'images/ear.png');
+						$('#happyTrue img').attr('src', 'images/happyActive.png');
 
 					}
 				},
