@@ -191,7 +191,7 @@
 						var memberStatus = results[0].get('status');
 					}
 					
-					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Send to Business Class</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
+					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Circle of Trust</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
 
 					if (theirTrueCircle.indexOf(window.userId) >=0){
 						$('div#' + member.id + ' a.showTrue').hide();

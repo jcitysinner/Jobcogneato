@@ -34,6 +34,7 @@ body.loginScreen{
 	background-position: bottom right 23%;
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 	height:100vh;
 	top:0;
 }
@@ -278,21 +279,22 @@ div#setStatus{
 		border-top: solid 1px #fff;
 		border-bottom: solid 1px #fff;
 		margin: 0;
+		transition: all 0.3s;
 		img{
 			width: 100px;
 			margin-bottom: 5px;
 		}
 	}
 	a#looking:hover, a#looking.active{
-		//color: #fff;
+		color: #31eccb;
 		//background-color: #31eccb;
 	}
 	a#interest:hover, a#interest.active{
-		//color: #fff;
+		color: #eed609;
 		//background-color: #eed609;
 	}
 	a#happy:hover, a#happy.active{
-		//color: #fff;
+		color: #ec7331;
 		//background-color: #ec7331;
 	}
 }
