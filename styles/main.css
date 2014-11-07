@@ -85,7 +85,6 @@ div#messageBox div#messageButtons a {
 }
 div#connections {
   display: none;
-  padding: 25px 80px;
 }
 div#innerCircle {
   padding-bottom: 80px;
@@ -96,7 +95,7 @@ div.container {
   margin: auto;
 }
 div#container {
-  padding-top: 60px;
+  padding: 60px 0 70px 0;
 }
 nav {
   background-color: #222;
