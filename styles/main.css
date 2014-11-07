@@ -95,7 +95,7 @@ div.container {
   margin: auto;
 }
 div#container {
-  padding-top: 30px;
+  padding-top: 60px;
 }
 nav {
   background-color: #222;
@@ -107,6 +107,10 @@ nav {
   margin: auto;
   z-index: 100;
   display: none;
+}
+nav img.logo {
+  height: 35px;
+  vertical-align: middle;
 }
 nav a {
   color: #fff;
@@ -270,19 +274,4 @@ div#setStatus a {
 div#setStatus a img {
   width: 100px;
   margin-bottom: 5px;
-}
-div#setStatus a#looking:hover,
-div#setStatus a#looking.active {
-  color: #fff;
-  background-color: #31eccb;
-}
-div#setStatus a#interest:hover,
-div#setStatus a#interest.active {
-  color: #fff;
-  background-color: #eed609;
-}
-div#setStatus a#happy:hover,
-div#setStatus a#happy.active {
-  color: #fff;
-  background-color: #ec7331;
 }

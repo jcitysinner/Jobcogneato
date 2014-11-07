@@ -47,7 +47,7 @@
 
 	<div class="container">
 		<nav>
-	
+			<img class='logo' src='images/logo.png'>
 			<a id="simple-menu" href="#sidr" style='float: right;'><img src='images/menu.svg'></a>
 		</nav>
 	</div>
@@ -394,21 +394,34 @@
 
 					user.save();
 					if (status === 0){
-						console.log('TEST STATUS');
-						document.getElementById('looking').className = 'active';
-						document.getElementById('interest').className = '';
-						document.getElementById('happy').className = '';
+						// console.log('TEST STATUS');
+						// document.getElementById('looking').className = 'active';
+						// document.getElementById('interest').className = '';
+						// document.getElementById('happy').className = '';
+
+						$('#looking img').attr('src', 'images/eyeActive.png');
+						$('#interest img').attr('src', 'images/ear.png');
+						$('#happy img').attr('src', 'images/happy.png');
+
 					} else if (status === 1){
-						console.log('TEST STATUS');
-						document.getElementById('looking').className = '';
-						document.getElementById('interest').className = 'active';
-						document.getElementById('happy').className = '';
+						// console.log('TEST STATUS');
+						// document.getElementById('looking').className = '';
+						// document.getElementById('interest').className = 'active';
+						// document.getElementById('happy').className = '';
+
+						$('#looking img').attr('src', 'images/eye.png');
+						$('#interest img').attr('src', 'images/earActive.png');
+						$('#happy img').attr('src', 'images/happy.png');
 
 					} else if (status === 2){
-						console.log('TEST STATUS');
-						document.getElementById('looking').className = '';
-						document.getElementById('interest').className = '';
-						document.getElementById('happy').className = 'active';
+						// console.log('TEST STATUS');
+						// document.getElementById('looking').className = '';
+						// document.getElementById('interest').className = '';
+						// document.getElementById('happy').className = 'active';
+
+						$('#looking img').attr('src', 'images/eye.png');
+						$('#interest img').attr('src', 'images/ear.png');
+						$('#happy img').attr('src', 'images/happyActive.png');
 
 					}
 				},
