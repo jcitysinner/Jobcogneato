@@ -29,7 +29,7 @@
 	<div id="sidr">
 	  <!-- Your content -->
 	  <ul>
-	  	   <li><a href="#">Profile</a></li>
+	  	<li><a href="#" onclick='toCurrentUserProfile()'>Profile</a></li>
 	    <li><a href="#" onclick='onLinkedInAuth()'><img src="images/contacts.png">Contacts</a></li>
 	    <li><a href="#" onclick='toNotifications()'><img src="images/notifications.png">Notifications</a></li>
 	    <li><a href="#" onclick='toStatus()'><img src="images/contacts.png">Status</a></li>
@@ -63,6 +63,13 @@
 
 		var userId = '';
 		var userObjectId = '';
+		var userFname;
+		var userLname;
+		var userImg;
+		var userProfession;
+		var userLocation;
+		var userGlobalStatus;
+		var userTrueStatus;
 		var innerCircleList = [];
 		var trueCircleList = [];
 		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
@@ -74,7 +81,7 @@
 
 			$('nav').show();
 			IN.API.Profile("me")
-			    .fields(["id", "firstName", "lastName"])
+			    .fields(["id", "firstName", "lastName", "pictureUrl"])
 			    .result(function(result) {
 			      addToDatabase(result.values[0]);
 			    })
@@ -86,7 +93,9 @@
 			function addToDatabase (profile) {
 				
 				$("#container").load("connections.html", function(){
-					window.userId = profile.id;
+				window.userId = profile.id;
+				window.userImg = profile.pictureUrl || "images/anon.png";
+				console.log(window.userImg);
 				var User = Parse.Object.extend("users");
 				var query = new Parse.Query(User);
 				query.equalTo("userId", profile.id);
@@ -114,6 +123,14 @@
 						//displayInnerCircle();	
 
 						if (results[0].get('isSetup')){
+
+							window.userFname = results[0].get('fname');
+							window.userLname = results[0].get('lname');
+							window.userProfession = results[0].get('profession');
+							window.userLocation = results[0].get('location');
+							window.userGlobalStatus = results[0].get('status');
+							window.userTrueStatus = results[0].get('trueStatus');
+
 							displayInnerCircle();
 							IN.API.Connections("me")
 							.fields("firstName", "lastName", "industry", "pictureUrl", "id")
@@ -121,6 +138,7 @@
 							.error(displayConnectionsErrors);
 							document.getElementById('logout').addEventListener('click', logOut);
 						} else {
+
 							$("#container").load("setup.html");
 						}
 					}
@@ -195,6 +213,8 @@
 				success: function (results) {
 					var inTrueCircle = window.trueCircleList.indexOf(member.id);
 					var theirTrueCircle = results[0].get('trueCircle') || [];
+					var theirProfession = results[0].get('profession') || 'Profession Not Set';
+					var theirLocation = results[0].get('location') || 'Location Not Set';
 					// console.log(inTrueCircle);
 					// console.log(member.id);
 					// console.log(window.trueCircleList);
@@ -204,8 +224,12 @@
 					} else {
 						var memberStatus = results[0].get('status');
 					}
-					
-					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Circle of Trust</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
+
+					var userParams = '"' + member.id + '", "' + pictureUrl + '", "' + member.firstName + '", "' + member.lastName + '",' + memberStatus + ',"' + theirProfession + '","' + theirLocation + '"';
+
+					console.log(userParams);
+
+					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Circle of Trust</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
 
 					if (theirTrueCircle.indexOf(window.userId) >=0){
 						$('div#' + member.id + ' a.showTrue').hide();
@@ -568,6 +592,39 @@
 
 				}
 			})
+
+		}
+
+		function toCurrentUserProfile(){
+
+			$("#container").load("profile.html", function() {
+				$.sidr('close', 'sidr');
+				$('#profileImage').attr('src', window.userImg);
+				$('#profileName').text(window.userFname + ' ' + window.userLname);
+				$('#profileProfession').text(window.userProfession);
+				$('#profileLocation').text(window.userLocation);
+				$('#profileGlobal').attr('src', window.iconsList[window.userGlobalStatus]);
+				$('#profileTrue').attr('src', window.iconsList[window.userTrueStatus]);
+
+			});
+
+		}
+
+		function toThisUserProfile(id, pictureUrl, firstName, lastName, status, profession, location) {
+
+			$("#container").load("profile.html", function() {
+				$.sidr('close', 'sidr');
+				$('#profileImage').attr('src', pictureUrl);
+				$('#profileName').text(firstName + ' ' + lastName);
+				$('#profileProfession').text(profession);
+				$('#profileLocation').text(location);
+				$('#profileGlobalStatusHeader').text("Status");
+				$('#profileGlobal').attr('src', window.iconsList[status]);
+
+				$('#profileTrueStatusHeader').hide();
+				$('#profileTrue').hide();
+
+			});
 
 		}
 
