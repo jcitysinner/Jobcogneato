@@ -229,7 +229,7 @@
 
 					console.log(userParams);
 
-					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Circle of Trust</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
+					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Inner Circle</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
 
 					if (theirTrueCircle.indexOf(window.userId) >=0){
 						$('div#' + member.id + ' a.showTrue').hide();
@@ -359,7 +359,7 @@
 		  }
 
 		  if (window.innerCircleList.length <= 0){
-		  	document.getElementById('innerCircle').innerHTML += '<p class="noInnerList">You don&#146;t have anyone in your Inner Circle. Click on Business Class below to see you LinkedIn conncections and add some to your Inner Circle!</p>';
+		  	document.getElementById('innerCircle').innerHTML += '<p class="noInnerList">You don&#146;t have anyone in your Inner Circle. Click on Business Class below to see your connections and add the people you trust to see your true status.</p>';
 		  }   
 		  //});
 		    

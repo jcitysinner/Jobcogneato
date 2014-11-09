@@ -14,13 +14,10 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -88,6 +85,11 @@ div#connections {
 }
 div#innerCircle {
   padding-bottom: 80px;
+}
+div#innerCircle p {
+  padding: 20px;
+  font-size: 19px;
+  text-transform: none;
 }
 div.container {
   width: 100%;
