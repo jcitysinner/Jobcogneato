@@ -286,16 +286,75 @@ div#setStatus{
 			margin-bottom: 5px;
 		}
 	}
-	a#looking:hover, a#looking.active{
+	a#looking:hover, a#lookingTrue.hover{
 		color: #31eccb;
 		//background-color: #31eccb;
 	}
-	a#interest:hover, a#interest.active{
+	a#interest:hover, a#interestTrue.hover{
 		color: #eed609;
 		//background-color: #eed609;
 	}
-	a#happy:hover, a#happy.active{
+	a#happy:hover, a#happyTrue.hover{
 		color: #ec7331;
 		//background-color: #ec7331;
+	}
+}
+
+div.signUpForm{
+	width: 100%;
+	max-width: 650px;
+	margin: auto;
+	p{
+
+	}
+	input{
+		width: 100%;
+		padding: 10px;
+		border-radius: 10px;
+	}
+	a{
+		display: block;
+		width: 100%;
+		padding: 25px 0;
+		text-align: center;
+		text-decoration: none;
+		border: solid 1px #8d8d8d;
+		border-radius: 10px;
+		margin-top: 50px;
+		transition: all 0.3s;
+	}
+	a:hover{
+		color: #383838;
+		background-color: #fff;
+		border: solid 1px #fff;
+	}
+	div.statusContainer{
+		width: 100%;
+		text-align: center;
+		border-top: solid 1px #fff;
+		border-bottom: solid 1px #fff;
+		a{
+			width: 33%;
+			display: inline-block;
+			margin: 0;
+			border: none;
+			border-radius: 0;
+			padding: 10px 0;
+		}
+		a:hover{
+			background-color: rgba(0, 0, 0, 0);
+		}
+		a#looking:hover, a#lookingTrue.hover{
+			color: #31eccb;
+			//background-color: #31eccb;
+		}
+		a#interest:hover, a#interestTrue.hover{
+			color: #eed609;
+			//background-color: #eed609;
+		}
+		a#happy:hover, a#happyTrue.hover{
+			color: #ec7331;
+			//background-color: #ec7331;
+		}
 	}
 }

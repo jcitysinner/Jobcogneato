@@ -280,14 +280,69 @@ div#setStatus a img {
   margin-bottom: 5px;
 }
 div#setStatus a#looking:hover,
-div#setStatus a#looking.active {
+div#setStatus a#lookingTrue.hover {
   color: #31eccb;
 }
 div#setStatus a#interest:hover,
-div#setStatus a#interest.active {
+div#setStatus a#interestTrue.hover {
   color: #eed609;
 }
 div#setStatus a#happy:hover,
-div#setStatus a#happy.active {
+div#setStatus a#happyTrue.hover {
+  color: #ec7331;
+}
+div.signUpForm {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+}
+div.signUpForm input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+}
+div.signUpForm a {
+  display: block;
+  width: 100%;
+  padding: 25px 0;
+  text-align: center;
+  text-decoration: none;
+  border: solid 1px #8d8d8d;
+  border-radius: 10px;
+  margin-top: 50px;
+  transition: all 0.3s;
+}
+div.signUpForm a:hover {
+  color: #383838;
+  background-color: #fff;
+  border: solid 1px #fff;
+}
+div.signUpForm div.statusContainer {
+  width: 100%;
+  text-align: center;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+}
+div.signUpForm div.statusContainer a {
+  width: 33%;
+  display: inline-block;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 10px 0;
+}
+div.signUpForm div.statusContainer a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+div.signUpForm div.statusContainer a#looking:hover,
+div.signUpForm div.statusContainer a#lookingTrue.hover {
+  color: #31eccb;
+}
+div.signUpForm div.statusContainer a#interest:hover,
+div.signUpForm div.statusContainer a#interestTrue.hover {
+  color: #eed609;
+}
+div.signUpForm div.statusContainer a#happy:hover,
+div.signUpForm div.statusContainer a#happyTrue.hover {
   color: #ec7331;
 }

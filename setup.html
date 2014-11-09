@@ -1,0 +1,107 @@
+<div class='signUpForm'>
+	<h1>Initial Setup</h1>
+	<p>Profession</p>
+	<input id='professionSignUp' type='text'>
+	<p>Location</p>
+	<input id='locationSignUp' type='text'>
+	<h3>Global Status</h3>
+	<p>This is the global status that any of your LinkedIn Connections can see.</p>
+	<div class='statusContainer'>
+		<a id='looking' href="#" onclick="setupGlobalStatus(0)"><img src='images/eyeActive.png'><br>Looking for a new job</a>
+		<a id='interest' href="#" onclick="setupGlobalStatus(1)"><img src='images/ear.png'><br>Interested in new possibilites</a>
+		<a id='happy' href="#" onclick="setupGlobalStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+	</div>
+	<h3>True Status</h3>
+	<p>This is the secret status that you can choose to show specific people in your inner circle.</p>
+	<div class='statusContainer'>
+		<a id='lookingTrue' href="#" onclick="setupTrueStatus(0)"><img src='images/eyeActive.png'><br>Looking for a new job</a>
+		<a id='interestTrue' href="#" onclick="setupTrueStatus(1)"><img src='images/ear.png'><br>Interested in new possibilites</a>
+		<a id='happyTrue' href="#" onclick="setupTrueStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+	</div>
+	<a href='#' id='signUpSubmit' onclick='submitSignUp()'>Submit</a>
+</div>
+
+<script>
+
+	$(document).ready(function() {
+		$('a').click(function(event){
+			event.preventDefault();
+		})
+	});
+
+	var globalStatus = 0;
+	var trueStatus = 0;
+
+	function showForm () {
+		$('.controls').hide();
+		$('.signUpForm').show();
+	}
+
+	function setupGlobalStatus (status) {
+		globalStatus = status;
+
+		if (status === 0){
+
+			$('#looking img').attr('src', 'images/eyeActive.png');
+			$('#interest img').attr('src', 'images/ear.png');
+			$('#happy img').attr('src', 'images/happy.png');
+
+		} else if (status === 1){
+
+			$('#looking img').attr('src', 'images/eye.png');
+			$('#interest img').attr('src', 'images/earActive.png');
+			$('#happy img').attr('src', 'images/happy.png');
+
+		} else if (status === 2){
+
+			$('#looking img').attr('src', 'images/eye.png');
+			$('#interest img').attr('src', 'images/ear.png');
+			$('#happy img').attr('src', 'images/happyActive.png');
+
+		}
+	}
+
+	function setupTrueStatus (status) {
+		trueStatus = status;
+		if (status === 0){
+
+			$('#lookingTrue img').attr('src', 'images/eyeActive.png');
+			$('#interestTrue img').attr('src', 'images/ear.png');
+			$('#happyTrue img').attr('src', 'images/happy.png');
+
+		} else if (status === 1){
+
+			$('#lookingTrue img').attr('src', 'images/eye.png');
+			$('#interestTrue img').attr('src', 'images/earActive.png');
+			$('#happyTrue img').attr('src', 'images/happy.png');
+
+		} else if (status === 2){
+
+			$('#lookingTrue img').attr('src', 'images/eye.png');
+			$('#interestTrue img').attr('src', 'images/ear.png');
+			$('#happyTrue img').attr('src', 'images/happyActive.png');
+
+		}
+	}
+
+	function submitSignUp () {
+		var User = Parse.Object.extend("users");
+		var query = new Parse.Query(User);
+		query.get(window.userObjectId,{
+			success: function(user){
+				
+				user.set('profession', $('#professionSignUp').val());
+				user.set('location', $('#locationSignUp').val());
+				user.set('status', window.globalStatus);
+				user.set('trueStatus', window.trueStatus);
+				user.set('isSetup', true);
+
+				user.save();
+
+				onLinkedInAuth();
+				
+			},
+		});
+	}
+
+</script>

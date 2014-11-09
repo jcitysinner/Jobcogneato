@@ -102,6 +102,7 @@
 							user.set('lname', profile.lastName);
 							user.set('status', 0);
 							user.set('trueStatus', 2);
+							user.set('isSetup', false);
 
 							user.save();
 						}
@@ -110,16 +111,21 @@
 						window.trueCircleList = results[0].get('trueCircle') || [];
 						console.log(window.innerCircleList);
 						//console.log(window.userObjectId);
-						displayInnerCircle();	
+						//displayInnerCircle();	
+
+						if (results[0].get('isSetup')){
+							displayInnerCircle();
+							IN.API.Connections("me")
+							.fields("firstName", "lastName", "industry", "pictureUrl", "id")
+							.result(displayConnections)
+							.error(displayConnectionsErrors);
+							document.getElementById('logout').addEventListener('click', logOut);
+						} else {
+							$("#container").load("setup.html");
+						}
 					}
 				})
 			
-
-			IN.API.Connections("me")
-				.fields("firstName", "lastName", "industry", "pictureUrl", "id")
-				.result(displayConnections)
-				.error(displayConnectionsErrors);
-				document.getElementById('logout').addEventListener('click', logOut);
 				});
 
 				
@@ -128,8 +134,13 @@
 		}
 
 		function logOut () {
-			IN.User.logout();
-			$("#container").load("login.html");
+			IN.User.logout(onLinkedInLogOut);
+
+			function onLinkedInLogOut () {
+				location.reload();
+			}
+			
+
 		}
 
 		function displayNotifications() {
@@ -348,6 +359,7 @@
 						user.set('lname', lname);
 						user.set('status', 0);
 						user.set('trueStatus', 2);
+						user.set('isSetup', false);
 						//user.addUnique('notifications', window.userId);
 
 						user.save();
