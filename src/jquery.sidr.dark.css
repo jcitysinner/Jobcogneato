@@ -15,6 +15,9 @@
 	-webkit-box-shadow:inset 0 0 5px 5px #222;
 	-moz-box-shadow:inset 0 0 5px 5px #222;
 	box-shadow:inset 0 0 5px 5px #222;
+	background: url(../images/geometric_bg.png);
+	background-repeat: repeat;
+	background-blend-mode: overlay;
 }
 
 	.sidr .sidr-inner{
