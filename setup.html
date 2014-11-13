@@ -29,60 +29,15 @@
 		})
 	});
 
-	var globalStatus = 0;
-	var trueStatus = 0;
+	window.userGlobalStatus = 0;
+	window.userTrueStatus = 0;
 
 	function showForm () {
 		$('.controls').hide();
 		$('.signUpForm').show();
 	}
 
-	function setupGlobalStatus (status) {
-		globalStatus = status;
-
-		if (status === 0){
-
-			$('#looking img').attr('src', 'images/eyeActive.png');
-			$('#interest img').attr('src', 'images/ear.png');
-			$('#happy img').attr('src', 'images/happy.png');
-
-		} else if (status === 1){
-
-			$('#looking img').attr('src', 'images/eye.png');
-			$('#interest img').attr('src', 'images/earActive.png');
-			$('#happy img').attr('src', 'images/happy.png');
-
-		} else if (status === 2){
-
-			$('#looking img').attr('src', 'images/eye.png');
-			$('#interest img').attr('src', 'images/ear.png');
-			$('#happy img').attr('src', 'images/happyActive.png');
-
-		}
-	}
-
-	function setupTrueStatus (status) {
-		trueStatus = status;
-		if (status === 0){
-
-			$('#lookingTrue img').attr('src', 'images/eyeActive.png');
-			$('#interestTrue img').attr('src', 'images/ear.png');
-			$('#happyTrue img').attr('src', 'images/happy.png');
-
-		} else if (status === 1){
-
-			$('#lookingTrue img').attr('src', 'images/eye.png');
-			$('#interestTrue img').attr('src', 'images/earActive.png');
-			$('#happyTrue img').attr('src', 'images/happy.png');
-
-		} else if (status === 2){
-
-			$('#lookingTrue img').attr('src', 'images/eye.png');
-			$('#interestTrue img').attr('src', 'images/ear.png');
-			$('#happyTrue img').attr('src', 'images/happyActive.png');
-
-		}
-	}
+	
 
 	function submitSignUp () {
 		var User = Parse.Object.extend("users");
@@ -92,8 +47,8 @@
 				
 				user.set('profession', $('#professionSignUp').val());
 				user.set('location', $('#locationSignUp').val());
-				user.set('status', window.globalStatus);
-				user.set('trueStatus', window.trueStatus);
+				user.set('status', window.userGlobalStatus);
+				user.set('trueStatus', window.userTrueStatus);
 				user.set('isSetup', true);
 
 				user.save();
