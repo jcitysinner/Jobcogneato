@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class='signUpForm'>
 	<h1>Initial Setup</h1>
 	<p>Profession</p>
@@ -40,6 +45,7 @@
 	
 
 	function submitSignUp () {
+		console.log(window.userObjectId);
 		var User = Parse.Object.extend("users");
 		var query = new Parse.Query(User);
 		query.get(window.userObjectId,{
@@ -54,6 +60,8 @@
 				user.save();
 
 				onLinkedInAuth();
+
+				console.log(window.userObjectId);
 				
 			},
 		});
