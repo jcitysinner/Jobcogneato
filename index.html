@@ -16,7 +16,7 @@
 
 	<!-- LinkedIn -->
 	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
-	   api_key: 773og0ol3lmrlw
+	   api_key: 772tv4net8ymny
 	   authorize: true
 	</script>
 	
@@ -142,6 +142,9 @@
 								window.userLocation = results[0].get('location');
 								window.userGlobalStatus = results[0].get('status');
 								window.userTrueStatus = results[0].get('trueStatus');
+								window.userObjectId = results[0].id;
+								window.innerCircleList = results[0].get('innerCircle') || [];
+								window.trueCircleList = results[0].get('trueCircle') || [];
 
 								displayInnerCircle();
 								IN.API.Connections("me")
@@ -207,10 +210,10 @@
 			// var query = new Parse.Query(User);
 			// query.get(window.userObjectId,{
 			// 	success: function(user){
-					console.log(window.innerCircleList);
-					for (var i = 0; i < window.innerCircleList.length; i++){
-						IN.API.Profile(window.innerCircleList[i]).result(populateInnerCircle);
-					}
+			console.log(window.innerCircleList);
+			for (var i = 0; i < window.innerCircleList.length; i++){
+				IN.API.Profile(window.innerCircleList[i]).result(populateInnerCircle);
+			}
 					
 			// 	},
 			// });
@@ -219,6 +222,7 @@
 			var member = profiles.values[0];
 			var pictureUrl = member.pictureUrl || "images/anon.png";
 			var innerCircleDiv = document.getElementById("innerCircle");
+
 
 			var User = Parse.Object.extend("users");
 			var query = new Parse.Query(User);
@@ -281,7 +285,7 @@
 
 		function sendMessage (memberId) {
 
-			$('body').append('<div id="blocker"><div id="messageBox"><h1>Send a Message</h1><textarea></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Close</a><a href="#" onclick="closeMessage()">Send</a></div></div></div>');
+			$('body').append('<div id="blocker"><div id="messageBox"><h1>Send a Message</h1><textarea id="sendMessage"></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Close</a><a href="#" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
 
 		}
 
@@ -417,6 +421,8 @@
 					else{
 						console.log('ERROR');
 					}
+
+					console.log(window.userObjectId);
 
 					var User = Parse.Object.extend("users");
 					var query = new Parse.Query(User);
@@ -754,6 +760,32 @@
 			},
 		});
 
+	}
+
+	function messageSent(user) {
+		// Call the Message sending API with the viewer's message
+		// On success, call displayMessageSent(); On failure, do nothing.
+
+		var message = $('#sendMessage').val(); 
+		var BODY = {
+			"recipients": {
+				"values": [{
+					"person": {
+						"_path": "/people/" + user,
+					}
+				}]
+			},
+			"subject": "Message from Jobcognito",
+			"body": message
+		}
+
+		IN.API.Raw("/people/~/mailbox")
+		.method("POST")
+		.body(JSON.stringify(BODY)) 
+		.result(function () { alert('SUCCESS!!') })
+		.error(function error(e) { alert ("No dice") });
+
+		$('#blocker').remove();
 	}
 
 	</script>
