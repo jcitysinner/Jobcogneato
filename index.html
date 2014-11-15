@@ -95,7 +95,6 @@
 				$("#container").load("connections.html", function(){
 				window.userId = profile.id;
 				window.userImg = profile.pictureUrl || "images/anon.png";
-				console.log(window.userImg);
 				var User = Parse.Object.extend("users");
 				var query = new Parse.Query(User);
 				query.equalTo("userId", profile.id);
@@ -134,9 +133,7 @@
 						//displayInnerCircle();	
 						else {
 
-							if (results[0].get('isSetup')){
-
-								window.userFname = results[0].get('fname');
+							window.userFname = results[0].get('fname');
 								window.userLname = results[0].get('lname');
 								window.userProfession = results[0].get('profession');
 								window.userLocation = results[0].get('location');
@@ -146,6 +143,8 @@
 								window.innerCircleList = results[0].get('innerCircle') || [];
 								window.trueCircleList = results[0].get('trueCircle') || [];
 
+							if (results[0].get('isSetup')){
+
 								displayInnerCircle();
 								IN.API.Connections("me")
 								.fields("firstName", "lastName", "industry", "pictureUrl", "id")
@@ -153,7 +152,7 @@
 								.error(displayConnectionsErrors);
 								document.getElementById('logout').addEventListener('click', logOut);
 							} else {
-
+								console.log(window.userObjectId);
 								$("#container").load("setup.html");
 							}
 
@@ -786,6 +785,7 @@
 		.error(function error(e) { alert ("No dice") });
 
 		$('#blocker').remove();
+
 	}
 
 	</script>
