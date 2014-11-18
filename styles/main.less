@@ -118,6 +118,8 @@ div#container{
 	padding: 60px 0 0;
 }
 
+// ----------------------- NAV --------------------->
+
 nav{
 	background-color: #222;
 	padding: 10px;
@@ -145,6 +147,9 @@ nav{
 		line-height: 0;
 	}
 }
+
+// -----------------------CONNECTIONS  --------------------->
+
 
 div.connection{
 	padding: 10px 5px 5px;
@@ -263,6 +268,8 @@ div#contactsNav{
 		color: #383838;
 	}
 }
+
+// -----------------------SET STATUS  --------------------->
 
 div#setStatus{
 	background:url(../images/bg.png);
@@ -413,6 +420,8 @@ div.signUpForm{
 	}
 }
 
+// ----------------------- PROFILE  --------------------->
+
 img#profileImage, div.connection img, div.innerConnection img{
 	filter: grayscale(100%);
 	filter: url(#greyscale);
@@ -421,19 +430,59 @@ img#profileImage, div.connection img, div.innerConnection img{
 }
 section#profileWrap{
 	width:90%;
+	max-width: 1170px;
 	margin:0 auto;
+	.about {
+		background:black;
+		text-align: center;
+		img#profileImage{
+			width: 125px;
+			height: auto;
+			margin: 0 auto;
+			border-radius: 50%;
+			border: 2px solid #8d8d8d;
+			box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3-);
+			-moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+			-webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+		}
+	}
+	.personalInfo{
+		text-align: center;
+	}
+	h3{
+		text-align: center;
+	}
+	.profileStatus{
+		background:grey;
+		text-align: center;
+		width:50%;
+		float: left;
+	}
+	.editButton{
+			padding: 5px 0;
+			text-align: center;
+		a{
+			padding: 9px;
+			display: inline-block;
+			border-radius: 3px;
+			border: solid 2px #8d8d8d;
+			text-decoration: none;
+			font-size: 13px;
+			width: 160px;
+			letter-spacing: 7px;
+			margin: 0 2%;
+		}
+		a:hover{
+			background-color: rgba(56, 56, 56, 0.4); 
+			-webkit-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+			-o-transition: all 0.3s ease-in-out;
+			transition: all 0.3s ease-in-out;
+			color:#c2bebe;
+			border-color: #03F9AD;
+		}
+	}
 }
-img#profileImage{
-	width: 125px;
-	height: auto;
-	margin: 0 auto;
-	border-radius: 50%;
-	border: 2px solid #8d8d8d;
-	box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3-);
-	-moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
-	-webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
-	// mix-blend-mode: multiply;
 
-}
 
 

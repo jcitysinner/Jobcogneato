@@ -14,13 +14,10 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -419,9 +416,14 @@ div.innerConnection img {
 }
 section#profileWrap {
   width: 90%;
+  max-width: 1170px;
   margin: 0 auto;
 }
-img#profileImage {
+section#profileWrap .about {
+  background: black;
+  text-align: center;
+}
+section#profileWrap .about img#profileImage {
   width: 125px;
   height: auto;
   margin: 0 auto;
@@ -430,4 +432,40 @@ img#profileImage {
   box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
   -moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
   -webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+}
+section#profileWrap .personalInfo {
+  text-align: center;
+}
+section#profileWrap h3 {
+  text-align: center;
+}
+section#profileWrap .profileStatus {
+  background: grey;
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+section#profileWrap .editButton {
+  padding: 5px 0;
+  text-align: center;
+}
+section#profileWrap .editButton a {
+  padding: 9px;
+  display: inline-block;
+  border-radius: 3px;
+  border: solid 2px #8d8d8d;
+  text-decoration: none;
+  font-size: 13px;
+  width: 160px;
+  letter-spacing: 7px;
+  margin: 0 2%;
+}
+section#profileWrap .editButton a:hover {
+  background-color: rgba(56, 56, 56, 0.4);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #c2bebe;
+  border-color: #03F9AD;
 }

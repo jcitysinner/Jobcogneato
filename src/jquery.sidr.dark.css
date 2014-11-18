@@ -2,13 +2,14 @@
 	display:none;
 	position:absolute;
 	position:fixed;
-	top:0;height:100%;
+	top:0;
+	height:100%;
 	z-index:999999;
-	width:300px;
+	width:265px;
 	overflow-x:
 	none;overflow-y:auto;
 	font-family: antonio-light, helvetica, arial, sans-serif;
-	font-size:27px;
+	font-size:21px;
 	letter-spacing: 2px;
 	background:#383838;
 	color:#8d8d8d;
