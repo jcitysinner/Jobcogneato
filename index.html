@@ -246,7 +246,7 @@
 
 					console.log(userParams);
 
-					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Inner Circle</a><a class='showTrue' href='#' onclick='showTrue(" + '"' + member.id + '"' + ")'>Show Status</a><a class='hideTrue' href='#' onclick='hideTrue(" + '"' + member.id + '"' + ")'>Hide Status</a></div></div>";
+					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Inner Circle</a></div></div>";
 
 					if (theirTrueCircle.indexOf(window.userId) >=0){
 						$('div#' + member.id + ' a.showTrue').hide();
@@ -279,6 +279,19 @@
 					
 				},
 			});
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.equalTo("userId", memberId);
+			query.find({
+				success: function (results) {
+					var object = results[0];
+					console.log(object.get('fname'));
+					object.remove('trueCircle', window.userId);
+
+					object.save();
+				}
+			})
 
 		}
 
@@ -401,21 +414,19 @@
 						user.set('status', 0);
 						user.set('trueStatus', 2);
 						user.set('isSetup', false);
+						user.set('trueCircle', [window.userId]);
 						//user.addUnique('notifications', window.userId);
 
 						user.save();
+
+						sendInvite(memberId);
+
 					}
 					else if (results.length == 1){
-						// var object = results[0];
-						// var User = Parse.Object.extend("users");
-						// var query = new Parse.Query(User);
-						// query.get(object.id,{
-						// 	success: function(user){
-						// 		user.addUnique('notifications', window.userId);
+						var object = results[0];
+						object.addUnique('trueCircle', window.userId)
 
-						// 		user.save();
-						// 	}
-						// });
+						object.save();
 					}
 					else{
 						console.log('ERROR');
@@ -785,6 +796,12 @@
 		.error(function error(e) { alert ("No dice") });
 
 		$('#blocker').remove();
+
+	}
+
+	function sendInvite (memberId) {
+
+		$('body').append('<div id="blocker"><div id="messageBox"><p>This user hasn&#39;t signed up for Jobcognito, send them an invite?<textarea id="sendMessage"></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Skip</a><a href="#" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
 
 	}
 
