@@ -353,7 +353,7 @@
 		function displayConnections(connections) {
 
 		  //$("#container").load("connections.html", function(){
-		  		var connectionsDiv = document.getElementById("connections");
+  			var connectionsDiv = document.getElementById("connectionList");
 
 		  var members = connections.values; // The list of members you are connected to
 		  for (	 member in members) {
@@ -802,6 +802,36 @@
 	function sendInvite (memberId) {
 
 		$('body').append('<div id="blocker"><div id="messageBox"><p>This user hasn&#39;t signed up for Jobcognito, send them an invite?<textarea id="sendMessage"></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Skip</a><a href="#" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
+
+	}
+
+	function searchUsers () {
+
+		$('#results').html('');
+
+		var connections = $('.connection');
+		var connectionNames = $('.connectionName');
+		var searchTerm = $('#searchInput').val().toUpperCase();
+		var searchResults = '';
+
+		$('#results').hide();
+		$('#connectionList').show();
+
+		for (var i = 0; i < connections.length; i++){
+
+			var connectionName = $(connectionNames[i]).text().toUpperCase();
+
+			if (connectionName.indexOf(searchTerm) >= 0){
+				var connection = $(connections[i]).prop('outerHTML');
+				searchResults += connection;
+			}
+
+		}
+
+		$('#results').show();
+		$('#results').html(searchResults);
+		$('#connectionList').hide();		
+
 
 	}
 
