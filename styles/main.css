@@ -192,22 +192,21 @@ div.connection div.connectionInfo p.connectionName {
   text-transform: none;
 }
 div.connection a {
-  display: block;
-  width: 65px;
-  height: 65px;
+  padding: 9px;
+  display: inline-block;
+  border-radius: 3px;
   border: solid 2px #8d8d8d;
-  border-radius: 50%;
-  color: #8d8d8;
-  float: right;
   text-decoration: none;
-  font-size: 45px;
+  font-size: 17px;
+  width: 25%;
+  letter-spacing: 3px;
+  margin-top: 15px;
+  float: right;
   text-align: center;
-  margin-top: 5px;
-  vertical-align: middle;
-  transition: all 0.2s;
 }
 div.connection a:hover {
-  background: #fff;
+  color: #c2bebe;
+  border-color: #03F9AD;
 }
 div.innerConnection {
   position: relative;
@@ -255,6 +254,7 @@ div.innerConnection img.innerStatusIcon {
 div.innerConnection div.innerButtons {
   padding: 15px 0;
   text-align: center;
+  display: none;
 }
 div.innerConnection div.innerButtons a {
   padding: 9px;

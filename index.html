@@ -282,6 +282,12 @@
 				    	event.preventDefault();
 				    })
 
+				    $('.innerConnection').click(function(event){
+				    	console.log(event.target.id);
+				    	targetId = event.target.id;
+				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+				    })
+
 
 				}
 			})
@@ -407,7 +413,7 @@
 
 					var pictureUrl = members[member].pictureUrl || "images/anon.png";
 		  			connectionsDiv.innerHTML += "<div id='"+ members[member].id +"' class='connection'><img src='" + pictureUrl + "'><div class='connectionInfo'><p class='connectionName'>" + members[member].firstName + " " + members[member].lastName
-		     +"</p><p>" + memberStatus + "</p></div><a href='#' id='" + members[member].id + "' onclick='addToInner("+'"'+ members[member].id +'","'+members[member].firstName+'","'+members[member].lastName+'"'+ ")'>+</a></div>";
+		     +"</p><p>" + memberStatus + "</p></div><a href='#' id='" + members[member].id + "' onclick='addToInner("+'"'+ members[member].id +'","'+members[member].firstName+'","'+members[member].lastName+'"'+ ")'>Add To Inner Circle</a></div>";
 		  		}
 		  	}
 		  }
