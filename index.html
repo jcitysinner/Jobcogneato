@@ -31,7 +31,7 @@
 	  <ul>
 	  	<li><a href="#" onclick='toCurrentUserProfile()'>Profile</a></li>
 	    <li><a href="#" onclick='onLinkedInAuth()'><img src="images/contacts.png">Contacts</a></li>
-	    <li><a href="#" onclick='toNotifications()'><img src="images/notifications.png">Notifications</a></li>
+	    <li><a href="#" onclick='toNotifications()'><img src="images/notifications.png">Notifications <span id='notificationCounter'></span></a></li>
 	    <li><a href="#" onclick='toStatus()'><img src="images/contacts.png">Status</a></li>
 	     <li><a href="#" id='logout'><img src="images/logout.png">Logout</a></li>
 	  </ul>
@@ -72,6 +72,7 @@
 		var userTrueStatus;
 		var innerCircleList = [];
 		var trueCircleList = [];
+		var notificationCounter;
 		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
 
 	    //---------------------------------------- LinkedIn CODE ----------------------------------------
@@ -134,16 +135,29 @@
 						else {
 
 							window.userFname = results[0].get('fname');
-								window.userLname = results[0].get('lname');
-								window.userProfession = results[0].get('profession');
-								window.userLocation = results[0].get('location');
-								window.userGlobalStatus = results[0].get('status');
-								window.userTrueStatus = results[0].get('trueStatus');
-								window.userObjectId = results[0].id;
-								window.innerCircleList = results[0].get('innerCircle') || [];
-								window.trueCircleList = results[0].get('trueCircle') || [];
+							window.userLname = results[0].get('lname');
+							window.userProfession = results[0].get('profession');
+							window.userLocation = results[0].get('location');
+							window.userGlobalStatus = results[0].get('status');
+							window.userTrueStatus = results[0].get('trueStatus');
+							window.userObjectId = results[0].id;
+							window.innerCircleList = results[0].get('innerCircle') || [];
+							window.trueCircleList = results[0].get('trueCircle') || [];
+							window.notificationCounter = results[0].get('notifications').length || 0;
 
 							if (results[0].get('isSetup')){
+
+								if (window.notificationCounter > 0){
+
+									console.log('Notification counter TEST');
+									$('#notificationCounter').html(window.notificationCounter);
+									$('#notificationCounter').show();
+
+								} else {
+
+									$('#notificationCounter').html('').hide();
+
+								}
 
 								displayInnerCircle();
 								IN.API.Connections("me")
@@ -185,11 +199,21 @@
 			query.get(window.userObjectId,{
 				success: function(user){
 
+					var notificationsDiv = document.getElementById("notifications");
+					if (user.get('notifications').length <= 0){
+						$(notificationsDiv).html($(notificationsDiv).html() + 'You Have No New Notifications');
+					}
+
 					//console.log(user.get('notifications')[0]);
 					for (var i = 0; i < user.get('notifications').length; i++){
 						IN.API.Profile(user.get('notifications')[i]).result(populateNotifications);
 						console.log('TEST');
 					}
+
+					user.set('notifications', []);
+					$('#notificationCounter').html('').hide();
+					user.save();
+
 				},
 			});
 		}
@@ -198,7 +222,7 @@
 			var member = profiles.values[0];
 
 			var notificationsDiv = document.getElementById("notifications");
-			notificationsDiv.innerHTML += '<p><a href="#" onclick="addToInnerCircle('+ "'" + member.id + "'" +')">Allow '+ member.firstName + ' ' + member.lastName +' to add you to their Inner Circle</a></p>';
+			notificationsDiv.innerHTML += '<p>You and ' + member.firstName + ' ' + member.lastName + ' have added each other to your Inner Circle!</p>';
 		}
 
 		function displayInnerCircle() {
@@ -403,6 +427,9 @@
 			query.equalTo("userId", memberId);
 			query.find({
 				success: function(results) {
+
+					var contains;
+
 					if (results.length == 0){
 
 						var User = Parse.Object.extend("users");
@@ -426,6 +453,12 @@
 						var object = results[0];
 						object.addUnique('trueCircle', window.userId)
 
+						if ($.inArray(window.userId, object.get('innerCircle')) >= 0){
+							console.log('BOTH USERS ARE FRIENDS!!!!')
+							contains = true;
+							object.addUnique('notifications', window.userId);
+						}
+
 						object.save();
 					}
 					else{
@@ -440,6 +473,11 @@
 						success: function(user){
 							console.log('ADDING USER')
 							user.addUnique('innerCircle', memberId);
+
+							if (contains){
+								console.log('BOTH USERS ARE FRIENDS 2222222 !!!!')
+								user.addUnique('notifications', memberId);
+							}
 
 							user.save();
 							console.log($('#' + memberId));
