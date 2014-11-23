@@ -78,7 +78,7 @@ div#messageBox div#messageButtons {
 }
 div#messageBox div#messageButtons a {
   display: block;
-  width: 50%;
+  width: 31%;
   margin-top: 15px;
   color: #8d8d8d;
   text-decoration: none;
@@ -89,6 +89,10 @@ div#messageBox div#messageButtons a {
   font-size: 28px;
   letter-spacing: 17px;
   font-family: antonio-light, helvetica, arial, sans-serif;
+}
+div#messageBox div#messageButtons a.sender {
+  width: 67%;
+  margin-left: 2%;
 }
 div#messageBox div#messageButtons a:hover {
   background-color: rgba(56, 56, 56, 0.4);
@@ -112,7 +116,7 @@ div#innerCircle p {
 }
 div.container {
   width: 100%;
-  max-width: 1170px;
+  max-width: 1400px;
   margin: auto;
 }
 div#container {
@@ -124,7 +128,6 @@ nav {
   overflow: hidden;
   position: fixed;
   width: 100%;
-  max-width: 1170px;
   margin: auto;
   z-index: 100;
   display: none;
@@ -210,6 +213,20 @@ div.innerConnection {
   position: relative;
   padding: 10px 5px 5px;
   border-bottom: 1px solid #8d8d8d;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+  /* IE6-9 */
 }
 div.innerConnection img {
   display: inline-block;
@@ -254,7 +271,6 @@ div.innerConnection div.innerButtons a:hover {
 }
 div#contactsNav {
   width: 100%;
-  max-width: 1170px;
   background-color: #383838;
   position: fixed;
   border-top: 1px #8d8d8d solid;
@@ -552,6 +568,11 @@ section#profileWrap .editButton a:hover {
   transition: all 0.3s ease-in-out;
   color: #c2bebe;
   border-color: #03F9AD;
+}
+section#editProfile .profileStatus {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
 }
 section#editProfile .editWrap {
   width: 100%;

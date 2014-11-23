@@ -119,6 +119,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/globalbg.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 63589,
+		"inputAbbreviatedPath": "\/images\/globalbg.jpg",
+		"outputAbbreviatedPath": "\/images\/globalbg.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/happy.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -137,6 +148,17 @@
 		"initialSize": 3637,
 		"inputAbbreviatedPath": "\/images\/happyActive.png",
 		"outputAbbreviatedPath": "\/images\/happyActive.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/innercircleHead.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 30363,
+		"inputAbbreviatedPath": "\/images\/innercircleHead.jpg",
+		"outputAbbreviatedPath": "\/images\/innercircleHead.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

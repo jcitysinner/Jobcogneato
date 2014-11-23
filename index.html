@@ -321,7 +321,7 @@
 
 		function sendMessage (memberId) {
 
-			$('body').append('<div id="blocker"><div id="messageBox"><h1>Send a Message</h1><textarea id="sendMessage"></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Close</a><a href="#" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
+			$('body').append('<div id="blocker"><div id="messageBox"><h1>Send a Message</h1><textarea id="sendMessage"></textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Close</a><a href="#" class="sender" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
 
 		}
 
