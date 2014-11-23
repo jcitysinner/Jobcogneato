@@ -159,10 +159,18 @@ div.connection{
 	padding: 10px 5px 5px;
 	border-bottom: 1px solid #8d8d8d;
 	overflow: hidden;
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.25)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 	img{
 		display: inline-block;
 		border-radius: 50%;
 		float: left;
+		margin-left:1%;
 	}
 	div.connectionInfo{
 		display: inline-block;
@@ -278,6 +286,7 @@ div#contactsNav{
 div#setStatus{
 	background:url(../images/bg.png);
 	text-align: center;
+
 	.innerStatus{
 		background:url(../images/globalbg.jpg);
 		background-repeat: no-repeat;
@@ -286,6 +295,7 @@ div#setStatus{
 		height:200px;
 		border-top: solid 1px #fff;
 		border-bottom: solid 1px #222222;
+
 	}
 	.trueStatus{
 		background:url(../images/innercircleHead.jpg);
@@ -545,22 +555,27 @@ section#profileWrap{
 }
 // <-------------- EDIT PROFILE  ------------------> //
 section#editProfile{
-	input{
-		width: 96%;
-		padding: 10px;
-		border-radius: 3px;
-		background: transparent;
-		font-size: 17px;
-		letter-spacing: 1px;
-		margin-bottom: 10px;
-	}
-	input[type="text"]:focus {
-		color: #c2bebe;
-		border: solid 3px #03F9AD;
-		outline: 0px;
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		box-shadow: none;
-	}
+	.editWrap{
+		width:100%;
+		max-width: 1170px;
+		margin:0 auto;
+		input{
+			width: 96%;
+			padding: 10px;
+			border-radius: 3px;
+			background: transparent;
+			font-size: 17px;
+			letter-spacing: 1px;
+			margin-bottom: 10px;
+		}
+		input[type="text"]:focus {
+			color: #c2bebe;
+			border: solid 3px #03F9AD;
+			outline: 0px;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			}
+		}
 }
 
