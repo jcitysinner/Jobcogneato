@@ -1,23 +1,24 @@
-<h1>Edit Profile</h1>
-<p>Profession</p>
-<input id='professionEdit' type='text'>
-<p>Location</p>
-<input id='locationEdit' type='text'>
-<h3>Global Status</h3>
-<p>Set your global job status: This will be seen by your regular LinkedIn Connections.</p>
-<div class='statusContainer'>
-	<a id='looking' href="#" onclick="setupGlobalStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
-	<a id='interest' href="#" onclick="setupGlobalStatus(1)"><img src='images/ear.png'><br>Listening for opportunities</a>
-	<a id='happy' href="#" onclick="setupGlobalStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
-</div>
-<h3>Inner Circle Status</h3>
-<p>Set your true job status: This will only be seen by the people you trust to add to your Inner Circle</p>
-<div class='statusContainer'>
-	<a id='lookingTrue' href="#" onclick="setupTrueStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
-	<a id='interestTrue' href="#" onclick="setupTrueStatus(1)"><img src='images/ear.png'><br>Listening for opportunities</a>
-	<a id='happyTrue' href="#" onclick="setupTrueStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
-</div>
-<a href='#' id='editProfileSubmit' onclick='editProfileSubmit()'>Submit</a>
+
+<section id="editProfile">
+	<input id='professionEdit' type='text' placeholder="profession">
+	<input id='locationEdit' type='text' placeholder="location">
+	<h3>Global Status</h3>
+	<p>Set your global job status: This will be seen by your regular LinkedIn Connections.</p>
+	<div class='statusContainer'>
+		<a id='looking' href="#" onclick="setupGlobalStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
+		<a id='interest' href="#" onclick="setupGlobalStatus(1)"><img src='images/ear.png'><br>Listening for opportunities</a>
+		<a id='happy' href="#" onclick="setupGlobalStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+	</div>
+	<h3>Inner Circle Status</h3>
+	<p>Set your true job status: This will only be seen by the people you trust to add to your Inner Circle</p>
+	<div class='statusContainer'>
+		<a id='lookingTrue' href="#" onclick="setupTrueStatus(0)"><img src='images/eye.png'><br>Looking for a new job</a>
+		<a id='interestTrue' href="#" onclick="setupTrueStatus(1)"><img src='images/ear.png'><br>Listening for opportunities</a>
+		<a id='happyTrue' href="#" onclick="setupTrueStatus(2)"><img src='images/happy.png'><br>Happy with current job</a>
+	</div>
+	<a href='#' id='editProfileSubmit' onclick='editProfileSubmit()'>Submit</a>
+</section>
+
 
 <script>
 $(document).ready(function() {
