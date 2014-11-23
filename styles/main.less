@@ -115,7 +115,7 @@ div.container{
 }
 
 div#container{
-	padding: 60px 0 0;
+	padding: 55px 0 0;
 }
 
 // ----------------------- NAV --------------------->
@@ -274,11 +274,20 @@ div#contactsNav{
 div#setStatus{
 	background:url(../images/bg.png);
 	text-align: center;
-	.innerStatus, .trueStatus{
-		background:url(../images/city.jpg);
+	.innerStatus{
+		background:url(../images/peeps.jpg);
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position:bottom center;
+		height:200px;
+		border-top: solid 1px #fff;
+		border-bottom: solid 1px #fff;
+	}
+	.trueStatus{
+		background:url(../images/city.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position:center center;
 		height:200px;
 		border-top: solid 1px #fff;
 		border-bottom: solid 1px #fff;
@@ -287,18 +296,18 @@ div#setStatus{
 		text-align: center;
 		text-transform: uppercase;
 		margin: 0;
-		font-size: 1.3em;
-		padding-top: 62px;
+		font-size: 0.9em;
+		padding-top: 35px;
 		letter-spacing: 3px;
-		color: #222222;
+		color: #c2bebe;
 	}
 	h3{
 		border-top: 3px solid #fff;
 		border-bottom: 3px solid #fff;
 		color: white;
 		text-align: center;
-		width: 233px;
-		font-size: 2.2em;
+		width: 275px;
+		font-size: 3.3em;
 		letter-spacing: 2px;
 		margin: 6px auto 0;
 		text-transform: uppercase;
@@ -423,18 +432,33 @@ div.signUpForm{
 // ----------------------- PROFILE  --------------------->
 
 img#profileImage, div.connection img, div.innerConnection img{
-	filter: grayscale(100%);
+	filter: grayscale(10%);
 	filter: url(#greyscale);
 	filter: gray;
 	-webkit-filter: grayscale(1);
 }
+div.connection img:hover,div.innerConnection img:hover{
+	filter: grayscale(10%);
+	filter: url(#greyscale);
+	filter: gray;
+	-webkit-filter: grayscale(0.3);
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	}
 section#profileWrap{
-	width:90%;
+	width:100%;
 	max-width: 1170px;
 	margin:0 auto;
+	.wrapperSmall{
+		max-width:600px;
+		margin: 0 auto;
+	}
 	.about {
 		background:black;
 		text-align: center;
+		margin-bottom: 50px;
 		img#profileImage{
 			width: 125px;
 			height: auto;
@@ -444,25 +468,57 @@ section#profileWrap{
 			box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3-);
 			-moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
 			-webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+			position:relative;
+			bottom:-38px;
 		}
 	}
 	.personalInfo{
 		text-align: center;
+		#profileName{
+			color:#c2bebe;
+			font-size: 33px;
+			letter-spacing: 5px;
+			margin: 15px 0 0;
+			font-family: antonio-bold, helvetica, arial, sans-serif;
+		}
+		#profileProfession{
+			font-family: antonio-regular, helvetica, arial, sans-serif;
+			font-size: 21px;
+			letter-spacing: 5px;
+			margin:0;
+		}
+		#profileLocation{
+			font-family: antonio-light, helvetica, arial, sans-serif;
+			font-size:19px;
+			letter-spacing: 5px;
+			margin:0;
+		}
 	}
 	h3{
 		text-align: center;
+		font-size: 19px;
+		padding:15px 0 0;
+		margin-bottom: 0;
+		letter-spacing: 7px;
+		border-top: solid 1px #8d8d8d;
 	}
 	.profileStatus{
-		background:grey;
 		text-align: center;
 		width:50%;
 		float: left;
+		h2{
+			color: #c2bebe;
+			margin-bottom:0;
+			font-size:27px;
+			font-family: antonio-regular, helvetica, arial, sans-serif;
+		}
 	}
 	.editButton{
-			padding: 5px 0;
+			padding: 20px 0;
 			text-align: center;
+			clear:both;
 		a{
-			padding: 9px;
+			padding: 7px;
 			display: inline-block;
 			border-radius: 3px;
 			border: solid 2px #8d8d8d;

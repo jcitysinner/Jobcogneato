@@ -14,13 +14,10 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -113,7 +110,7 @@ div.container {
   margin: auto;
 }
 div#container {
-  padding: 60px 0 0;
+  padding: 55px 0 0;
 }
 nav {
   background-color: #222;
@@ -261,12 +258,20 @@ div#setStatus {
   background: url(../images/bg.png);
   text-align: center;
 }
-div#setStatus .innerStatus,
+div#setStatus .innerStatus {
+  background: url(../images/peeps.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  height: 200px;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+}
 div#setStatus .trueStatus {
   background: url(../images/city.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: bottom center;
+  background-position: center center;
   height: 200px;
   border-top: solid 1px #fff;
   border-bottom: solid 1px #fff;
@@ -275,18 +280,18 @@ div#setStatus h2 {
   text-align: center;
   text-transform: uppercase;
   margin: 0;
-  font-size: 1.3em;
-  padding-top: 62px;
+  font-size: 0.9em;
+  padding-top: 35px;
   letter-spacing: 3px;
-  color: #222222;
+  color: #c2bebe;
 }
 div#setStatus h3 {
   border-top: 3px solid #fff;
   border-bottom: 3px solid #fff;
   color: white;
   text-align: center;
-  width: 233px;
-  font-size: 2.2em;
+  width: 275px;
+  font-size: 3.3em;
   letter-spacing: 2px;
   margin: 6px auto 0;
   text-transform: uppercase;
@@ -412,19 +417,35 @@ div.signUpForm .top {
 img#profileImage,
 div.connection img,
 div.innerConnection img {
-  filter: grayscale(100%);
+  filter: grayscale(10%);
   filter: url(#greyscale);
   filter: gray;
   -webkit-filter: grayscale(1);
 }
+div.connection img:hover,
+div.innerConnection img:hover {
+  filter: grayscale(10%);
+  filter: url(#greyscale);
+  filter: gray;
+  -webkit-filter: grayscale(0.3);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
 section#profileWrap {
-  width: 90%;
+  width: 100%;
   max-width: 1170px;
+  margin: 0 auto;
+}
+section#profileWrap .wrapperSmall {
+  max-width: 600px;
   margin: 0 auto;
 }
 section#profileWrap .about {
   background: black;
   text-align: center;
+  margin-bottom: 50px;
 }
 section#profileWrap .about img#profileImage {
   width: 125px;
@@ -435,25 +456,57 @@ section#profileWrap .about img#profileImage {
   box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
   -moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
   -webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+  position: relative;
+  bottom: -38px;
 }
 section#profileWrap .personalInfo {
   text-align: center;
 }
+section#profileWrap .personalInfo #profileName {
+  color: #c2bebe;
+  font-size: 33px;
+  letter-spacing: 5px;
+  margin: 15px 0 0;
+  font-family: antonio-bold, helvetica, arial, sans-serif;
+}
+section#profileWrap .personalInfo #profileProfession {
+  font-family: antonio-regular, helvetica, arial, sans-serif;
+  font-size: 21px;
+  letter-spacing: 5px;
+  margin: 0;
+}
+section#profileWrap .personalInfo #profileLocation {
+  font-family: antonio-light, helvetica, arial, sans-serif;
+  font-size: 19px;
+  letter-spacing: 5px;
+  margin: 0;
+}
 section#profileWrap h3 {
   text-align: center;
+  font-size: 19px;
+  padding: 15px 0 0;
+  margin-bottom: 0;
+  letter-spacing: 7px;
+  border-top: solid 1px #8d8d8d;
 }
 section#profileWrap .profileStatus {
-  background: grey;
   text-align: center;
   width: 50%;
   float: left;
 }
+section#profileWrap .profileStatus h2 {
+  color: #c2bebe;
+  margin-bottom: 0;
+  font-size: 27px;
+  font-family: antonio-regular, helvetica, arial, sans-serif;
+}
 section#profileWrap .editButton {
-  padding: 5px 0;
+  padding: 20px 0;
   text-align: center;
+  clear: both;
 }
 section#profileWrap .editButton a {
-  padding: 9px;
+  padding: 7px;
   display: inline-block;
   border-radius: 3px;
   border: solid 2px #8d8d8d;
@@ -471,23 +524,4 @@ section#profileWrap .editButton a:hover {
   transition: all 0.3s ease-in-out;
   color: #c2bebe;
   border-color: #03F9AD;
-}
-
-#searchSubmit{
-  padding: 9px;
-  display: inline-block;
-  border-radius: 3px;
-  border: solid 2px #8d8d8d;
-  text-decoration: none;
-  font-size: 17px;
-  width: 10%;
-  letter-spacing: 3px;
-  text-align: center;
-}
-#searchInput{
-  display: inline-block;
-  width: 87%;
-  margin-left: 2%;
-  padding: 9px;
-  font-size: 17px;
 }
