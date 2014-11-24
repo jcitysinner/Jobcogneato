@@ -103,6 +103,43 @@ div#messageBox div#messageButtons a:hover {
 div#connections {
   display: none;
 }
+div#connections input#searchInput {
+  width: 90%;
+  font-size: 15px;
+  background: #222;
+  padding: 3px 10px 2px 4px;
+  margin: 10px;
+  letter-spacing: 1px;
+}
+div#connections input[type="text"]:focus {
+  color: #fff;
+  background: #000;
+  border: solid 3px #03F9AD;
+  outline: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+div#connections a#searchSubmit {
+  padding: 2px 10px;
+  display: inline-block;
+  border-radius: 3px;
+  border: solid 2px #8d8d8d;
+  text-decoration: none;
+  font-size: 17px;
+  width: 80px;
+  letter-spacing: 3px;
+  margin: 0;
+}
+div#connections a#searchSubmit:hover {
+  background-color: rgba(56, 56, 56, 0.4);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #c2bebe;
+  border-color: #03F9AD;
+}
 div#innerCircle {
   padding-bottom: 80px;
 }
@@ -479,12 +516,15 @@ section#profileWrap .wrapperSmall {
   margin: 0 auto;
 }
 section#profileWrap .about {
-  background: black;
+  background: url(../images/peeps.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
   text-align: center;
   margin-bottom: 50px;
 }
 section#profileWrap .about img#profileImage {
-  width: 125px;
+  width: 115px;
   height: auto;
   margin: 0 auto;
   border-radius: 50%;
@@ -565,14 +605,6 @@ section#profileWrap .editButton a:hover {
   color: #c2bebe;
   border-color: #03F9AD;
 }
-section#editProfile .profileStatus {
-  text-align: center;
-  width: 50%;
-  margin: 0 auto;
-}
-section#editProfile .profileStatus h2 {
-  display: none;
-}
 section#editProfile .editWrap {
   width: 100%;
   max-width: 1170px;
@@ -594,4 +626,73 @@ section#editProfile .editWrap input[type="text"]:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+section#editProfile .editWrap div.statusContainer {
+  width: 100%;
+  text-align: center;
+  padding: 0 10%;
+}
+section#editProfile .editWrap div.statusContainer a {
+  width: 32%;
+  display: inline-block;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 10px 0;
+  text-decoration: none;
+}
+section#editProfile .editWrap div.statusContainer img {
+  width: 50%;
+}
+section#editProfile .editWrap div.statusContainer a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+section#editProfile .editWrap div.statusContainer a#looking:hover,
+section#editProfile .editWrap div.statusContainer a#lookingTrue.hover {
+  color: #31eccb;
+}
+section#editProfile .editWrap div.statusContainer a#interest:hover,
+section#editProfile .editWrap div.statusContainer a#interestTrue.hover {
+  color: #eed609;
+}
+section#editProfile .editWrap div.statusContainer a#happy:hover,
+section#editProfile .editWrap div.statusContainer a#happyTrue.hover {
+  color: #ec7331;
+}
+section#editProfile .editWrap div.statusContainer img {
+  width: 75px;
+}
+section#editProfile .editWrap div.statusContainer h3 {
+  text-align: center;
+  margin: 10px 0;
+  color: #c2bebe;
+  font-size: 21px;
+  letter-spacing: 5px;
+}
+section#editProfile .editWrap div.statusContainer p {
+  text-align: center;
+}
+section#editProfile .editWrap div.statusContainer a#editProfileSubmit {
+  padding: 7px;
+  display: inline-block;
+  border-radius: 3px;
+  border: solid 2px #8d8d8d;
+  text-decoration: none;
+  font-size: 15px;
+  width: 160px;
+  letter-spacing: 7px;
+  margin: 30px 2%;
+  text-align: center;
+}
+section#editProfile .editWrap div.statusContainer a#editProfileSubmit:hover {
+  background-color: rgba(56, 56, 56, 0.4);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #c2bebe;
+  border-color: #03F9AD;
+}
+section#editProfile .editWrap div.divider {
+  border-top: solid 1px #8d8d8d;
 }
