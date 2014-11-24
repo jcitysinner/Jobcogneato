@@ -140,9 +140,11 @@ nav{
 	display: none;
 	border-bottom: solid 1px #8d8d8d;
 	img.logo{
-		height: 35px;
-		vertical-align: middle;
+		height: auto;
+		vertical-align: bottom;
 		cursor: pointer;
+		width: 175px;
+		margin-top: 5px;
 	}
 	a{
 		color: #fff;
@@ -188,22 +190,21 @@ div.connection{
 		}
 	}
 	a{
-		display: block;
-		width: 65px;
-		height: 65px;
+		padding: 9px;
+		display: inline-block;
 		border: solid 2px #8d8d8d;
-		border-radius: 50%;
-		color: #8d8d8;
-		float: right;
-		text-decoration: none;
-		font-size: 45px;
-		text-align: center;
-		margin-top: 5px;
-		vertical-align: middle;
-		transition: all 0.2s;
+		border-radius: 3%;
+		font-size: 17px;
+ 		width: 25%;
+  		letter-spacing: 3px;
+  		margin-top: 15px;
+	  	float: right;		
+	  	text-decoration: none;
+		text-align: center;	
 	}
 	a:hover{
-		background: #fff;
+		color: #c2bebe;
+		border-color: #03F9AD;
 	}
 }
 div.innerConnection{
@@ -239,6 +240,7 @@ div.innerConnection{
 	div.innerButtons{
 		padding: 15px 0;
 		text-align: center;
+		display:none;
 		a{
 			padding: 9px;
 			display: inline-block;
@@ -537,6 +539,10 @@ section#profileWrap{
 			font-size:27px;
 			font-family: antonio-regular, helvetica, arial, sans-serif;
 		}
+		img{
+			width:125px;
+			height:auto;
+		}
 	}
 	.editButton{
 			padding: 20px 0;
@@ -570,6 +576,9 @@ section#editProfile{
 		text-align: center;
 		width:50%;
 		margin: 0 auto;
+		h2{
+			display:none;
+		}
 	}
 	.editWrap{
 		width:100%;

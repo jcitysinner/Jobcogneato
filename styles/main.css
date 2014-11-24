@@ -14,13 +14,10 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -134,9 +131,11 @@ nav {
   border-bottom: solid 1px #8d8d8d;
 }
 nav img.logo {
-  height: 35px;
-  vertical-align: middle;
+  height: auto;
+  vertical-align: bottom;
   cursor: pointer;
+  width: 175px;
+  margin-top: 5px;
 }
 nav a {
   color: #fff;
@@ -154,25 +153,18 @@ div.connection {
   overflow: hidden;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
-
 }
 div.connection img {
   display: inline-block;
@@ -194,14 +186,14 @@ div.connection div.connectionInfo p.connectionName {
 div.connection a {
   padding: 9px;
   display: inline-block;
-  border-radius: 3px;
   border: solid 2px #8d8d8d;
-  text-decoration: none;
+  border-radius: 3%;
   font-size: 17px;
   width: 25%;
   letter-spacing: 3px;
   margin-top: 15px;
   float: right;
+  text-decoration: none;
   text-align: center;
 }
 div.connection a:hover {
@@ -214,25 +206,18 @@ div.innerConnection {
   border-bottom: 1px solid #8d8d8d;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
-
 }
 div.innerConnection img {
   display: inline-block;
@@ -551,6 +536,10 @@ section#profileWrap .profileStatus h2 {
   font-size: 27px;
   font-family: antonio-regular, helvetica, arial, sans-serif;
 }
+section#profileWrap .profileStatus img {
+  width: 125px;
+  height: auto;
+}
 section#profileWrap .editButton {
   padding: 20px 0;
   text-align: center;
@@ -580,6 +569,9 @@ section#editProfile .profileStatus {
   text-align: center;
   width: 50%;
   margin: 0 auto;
+}
+section#editProfile .profileStatus h2 {
+  display: none;
 }
 section#editProfile .editWrap {
   width: 100%;
