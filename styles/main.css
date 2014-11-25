@@ -400,15 +400,15 @@ div#setStatus a img {
   margin-bottom: 5px;
 }
 div#setStatus a#looking:hover,
-div#setStatus a#lookingTrue.hover {
+div#setStatus a#lookingTrue:hover {
   color: #03F9AD;
 }
 div#setStatus a#interest:hover,
-div#setStatus a#interestTrue.hover {
+div#setStatus a#interestTrue:hover {
   color: #DCF908;
 }
 div#setStatus a#happy:hover,
-div#setStatus a#happyTrue.hover {
+div#setStatus a#happyTrue:hover {
   color: #F73C03;
 }
 div.signUpForm {

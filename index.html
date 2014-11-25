@@ -74,6 +74,7 @@
 		var trueCircleList = [];
 		var notificationCounter;
 		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
+		var statusList = ['Looking for a new job', 'listening for opportunities', 'Happy with current job'];
 
 	    //---------------------------------------- LinkedIn CODE ----------------------------------------
 		
@@ -273,7 +274,7 @@
 
 					console.log(userParams);
 
-					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Inner Circle</a></div></div>";
+					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a onclick='toThisUserProfile(" + userParams + ")'>View Profile</a><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Send a Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove From Inner Circle</a></div></div>";
 
 					if (theirTrueCircle.indexOf(window.userId) >=0){
 						$('div#' + member.id + ' a.showTrue').hide();
@@ -682,6 +683,8 @@
 				$('#profileLocation').text(window.userLocation);
 				$('#profileGlobal').attr('src', window.iconsList[window.userGlobalStatus]);
 				$('#profileTrue').attr('src', window.iconsList[window.userTrueStatus]);
+				$('#profileGlobalDesc').text(window.statusList[window.userGlobalStatus]);
+				$('#profileTrueDesc').text(window.StatusList[window.userTrueStatus]);
 
 			});
 
@@ -740,10 +743,14 @@
 				$('#profileLocation').text(location);
 				$('#profileGlobalStatusHeader').text("Status");
 				$('#profileGlobal').attr('src', window.iconsList[status]);
+				$('#profileGlobalDesc').text(window.statusList[status]);
 
-				$('#profileTrueStatusHeader').hide();
-				$('#profileTrue').hide();
-				$('#editProfile').hide();
+				$('.profileStatus').css('width', '100%');
+
+				$('#profileGlobalStatusHeader').remove();
+				$('#profileTrueStatusHeader').remove();
+				$('#profileTrue').remove();
+				$('#editProfile').remove();
 
 			});
 
