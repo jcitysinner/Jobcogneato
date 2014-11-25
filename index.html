@@ -48,6 +48,7 @@
 	<div class="container">
 		<nav>
 			<img class='logo' src='images/logo.png' onclick='onLinkedInAuth()'>
+			<h2 id='navHeader'></h2>
 			<a id="simple-menu" href="#sidr" style='float: right;'><img src='images/menu.svg'></a>
 		</nav>
 	</div>
@@ -95,6 +96,9 @@
 			function addToDatabase (profile) {
 				
 				$("#container").load("connections.html", function(){
+
+				$('#navHeader').text('Connections');
+
 				window.userId = profile.id;
 				window.userImg = profile.pictureUrl || "images/anon.png";
 
@@ -126,7 +130,9 @@
 								success: function(results) {
 									window.userObjectId = results[0].id;
 									console.log(window.userObjectId);
-									$("#container").load("setup.html");
+									$("#container").load("setup.html", function(){
+										$('#navHeader').text('Setup');
+									});
 								}
 							})
 						}
@@ -171,7 +177,9 @@
 								document.getElementById('logout').addEventListener('click', logOut);
 							} else {
 								console.log(window.userObjectId);
-								$("#container").load("setup.html");
+								$("#container").load("setup.html", function(){
+									$('#navHeader').text('Setup');
+								});
 							}
 
 						}
@@ -375,12 +383,15 @@
 
 		function toNotifications(){
 			$("#container").load("notifications.html", function(){
+				$('#navHeader').text('Notifications');
 				displayNotifications();
 			});
 			$.sidr('close', 'sidr');
 		}
 		function toStatus(){
-			$("#container").load("status.html");
+			$("#container").load("status.html", function(){
+				$('#navHeader').text('Status');
+			});
 			$.sidr('close', 'sidr');
 		}
 
@@ -682,7 +693,11 @@
 		function toCurrentUserProfile(){
 
 			$("#container").load("profile.html", function() {
+
+				$('#navHeader').text('Profile');
+
 				$.sidr('close', 'sidr');
+
 				$('#profileImage').attr('src', window.userImg);
 				$('#profileName').text(window.userFname + ' ' + window.userLname);
 				$('#profileProfession').text(window.userProfession);
@@ -699,6 +714,8 @@
 		function toEditProfile() {
 
 			$("#container").load("editProfile.html", function() {
+
+				$('#navHeader').text('Edit Profile');
 
 				$.sidr('close', 'sidr');
 
@@ -742,6 +759,9 @@
 		function toThisUserProfile(id, pictureUrl, firstName, lastName, status, profession, location) {
 
 			$("#container").load("profile.html", function() {
+
+				$('#navHeader').text(firstName + "'s Profile");
+
 				$.sidr('close', 'sidr');
 				$('#profileImage').attr('src', pictureUrl);
 				$('#profileName').text(firstName + ' ' + lastName);

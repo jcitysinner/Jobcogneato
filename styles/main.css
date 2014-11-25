@@ -177,6 +177,7 @@ nav img.logo {
   cursor: pointer;
   width: 175px;
   margin-top: 5px;
+  float: left;
 }
 nav a {
   color: #fff;
@@ -742,4 +743,11 @@ a#sendThisUserMessage:hover{
   color: #c2bebe;
   border-color: #03F9AD;
 
+}
+
+h2#navHeader{
+  position: inherit;
+  width: 96%;
+  text-align: center;
+  margin: 0;
 }
