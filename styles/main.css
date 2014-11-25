@@ -178,6 +178,8 @@ nav img.logo {
   width: 175px;
   margin-top: 5px;
   float: left;
+  position: relative;
+  z-index: 10;
 }
 nav a {
   color: #fff;
@@ -188,6 +190,7 @@ nav a img {
 }
 nav a#simple-menu {
   line-height: 0;
+  position: relative;
 }
 div.connection {
   padding: 10px 5px 5px;
@@ -749,5 +752,5 @@ h2#navHeader{
   position: inherit;
   width: 96%;
   text-align: center;
-  margin: 0;
+  margin: 0 auto;
 }
