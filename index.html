@@ -74,6 +74,8 @@
 		var innerCircleList = [];
 		var trueCircleList = [];
 		var notificationCounter;
+		var userPositionPlaceholder;
+		var userLocationPlaceholder;
 		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
 		var statusList = ['Looking for a new job', 'listening for opportunities', 'Happy with current job'];
 
@@ -84,7 +86,7 @@
 
 			$('nav').show();
 			IN.API.Profile("me")
-			    .fields(["id", "firstName", "lastName", "pictureUrl"])
+			    .fields(["id", "firstName", "lastName", "pictureUrl", "positions:(title)", "location:(name)"])
 			    .result(function(result) {
 			      addToDatabase(result.values[0]);
 			    })
@@ -94,7 +96,10 @@
 			    $.sidr('close', 'sidr');
 
 			function addToDatabase (profile) {
-				
+
+				window.userPositionPlaceholder = profile.positions.values[0].title;
+				window.userLocationPlaceholder = profile.location.name;
+
 				$("#container").load("connections.html", function(){
 
 				$('#navHeader').text('Connections');
@@ -120,6 +125,7 @@
 							user.set('status', 0);
 							user.set('trueStatus', 2);
 							user.set('isSetup', false);
+							user.set('notifications', []);
 
 							user.save();
 
@@ -157,6 +163,8 @@
 
 							if (results[0].get('isSetup')){
 
+								
+
 								if (window.notificationCounter > 0){
 
 									console.log('Notification counter TEST');
@@ -179,6 +187,8 @@
 								console.log(window.userObjectId);
 								$("#container").load("setup.html", function(){
 									$('#navHeader').text('Setup');
+									$('#professionSignUp').val(window.userPositionPlaceholder);
+									$('#locationSignUp').val(window.userLocationPlaceholder);
 								});
 							}
 
@@ -463,6 +473,7 @@
 						user.set('trueStatus', 2);
 						user.set('isSetup', false);
 						user.set('trueCircle', [window.userId]);
+						user.set('notifications', []);
 						//user.addUnique('notifications', window.userId);
 
 						user.save();
