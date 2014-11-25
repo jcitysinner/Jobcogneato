@@ -614,6 +614,7 @@ section#profileWrap .editButton a {
   width: 160px;
   letter-spacing: 7px;
   margin: 0 2%;
+  cursor: pointer;
 }
 section#profileWrap .editButton a:hover {
   background-color: rgba(56, 56, 56, 0.4);
@@ -718,4 +719,27 @@ section#editProfile .editWrap div.divider {
 
 img#menuProfilePic{
   border-radius: 50%;
+}
+
+a#sendThisUserMessage{
+  
+  padding: 9px;
+  display: block;
+  border-radius: 3px;
+  border: solid 2px #8d8d8d;
+  text-decoration: none;
+  font-size: 17px;
+  width: 100%;
+  letter-spacing: 3px;
+  margin: 0 2%;
+  text-align: center;
+  cursor: pointer;
+
+}
+a#sendThisUserMessage:hover{
+
+  transition: all 0.3s ease-in-out;
+  color: #c2bebe;
+  border-color: #03F9AD;
+
 }
