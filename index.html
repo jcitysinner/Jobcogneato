@@ -608,6 +608,12 @@
 				document.getElementById('inner').className = '';
 				document.getElementById('connections').style.display = 'block';
 				document.getElementById('innerCircle').style.display ='none';
+
+				$('#searchInput').keypress(function(e){
+			      if(e.keyCode==13)
+			      $('#searchSubmit').click();
+			    });
+				
 			}
 
 		}
