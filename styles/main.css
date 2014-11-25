@@ -713,3 +713,7 @@ section#editProfile .editWrap div.statusContainer a#editProfileSubmit:hover {
 section#editProfile .editWrap div.divider {
   border-top: solid 1px #8d8d8d;
 }
+
+img#menuProfilePic{
+  border-radius: 50%;
+}

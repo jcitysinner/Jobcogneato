@@ -29,7 +29,7 @@
 	<div id="sidr">
 	  <!-- Your content -->
 	  <ul>
-	  	<li><a href="#" onclick='toCurrentUserProfile()'>Profile</a></li>
+	  	<li><a href="#" onclick='toCurrentUserProfile()'><img id='menuProfilePic'>Profile</a></li>
 	    <li><a href="#" onclick='onLinkedInAuth()'><img src="images/contacts.png">Contacts</a></li>
 	    <li><a href="#" onclick='toNotifications()'><img src="images/notifications.png">Notifications <span id='notificationCounter'></span></a></li>
 	    <li><a href="#" onclick='toStatus()'><img src="images/contacts.png">Status</a></li>
@@ -96,6 +96,9 @@
 				$("#container").load("connections.html", function(){
 				window.userId = profile.id;
 				window.userImg = profile.pictureUrl || "images/anon.png";
+
+				$('#menuProfilePic').attr('src', window.userImg);
+
 				var User = Parse.Object.extend("users");
 				var query = new Parse.Query(User);
 				query.equalTo("userId", profile.id);
