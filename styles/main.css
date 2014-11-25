@@ -632,7 +632,7 @@ section#editProfile .editWrap {
   margin: 0 auto;
 }
 section#editProfile .editWrap input {
-  width: 96%;
+  width: 100%;
   padding: 10px;
   border-radius: 3px;
   background: transparent;
