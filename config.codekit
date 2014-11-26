@@ -218,6 +218,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/status.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1017,
+		"inputAbbreviatedPath": "\/images\/status.png",
+		"outputAbbreviatedPath": "\/images\/status.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -291,35 +302,6 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
-		},
-	"\/styles\/main.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/styles\/main.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/styles\/main.less": {
-		"allowInsecureImports": 0,
-		"createSourceMap": 0,
-		"disableJavascript": 0,
-		"fileType": 1,
-		"ieCompatibility": 1,
-		"ignore": 0,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/styles\/main.less",
-		"outputAbbreviatedPath": "\/styles\/main.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
-		"relativeURLS": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"strictImports": 0,
-		"strictMath": 0,
-		"strictUnits": 0
 		}
 	},
 "hooks": [
