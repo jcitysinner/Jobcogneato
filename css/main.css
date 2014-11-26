@@ -14,13 +14,10 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -193,25 +190,18 @@ div.connection {
   overflow: hidden;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
-
 }
 div.connection img {
   display: inline-block;
@@ -253,25 +243,18 @@ div.innerConnection {
   border-bottom: 1px solid #8d8d8d;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
-
 }
 div.innerConnection img {
   display: inline-block;
@@ -713,62 +696,128 @@ section#editProfile .editWrap div.statusContainer a#editProfileSubmit:hover {
 section#editProfile .editWrap div.divider {
   border-top: solid 1px #8d8d8d;
 }
-@media all and (max-width: 550px) and (min-width: 200px), (min-width: 1151px) {
-
-  div.innerConnection {
-    position: relative;
+@media screen and (max-width: 500px) {
+  div.connection {
     padding: 10px 5px 5px;
-    border-bottom: 1px solid #8d8d8d;
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
-    /* IE10+ */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
-    /* IE6-9 */
   }
-  div.innerConnection img {
+  div.connection img {
     display: inline-block;
-    border-radius: 50px;
-    width: 50px;
+    border-radius: 50%;
+    float: left;
+    margin-left: 1%;
+    width: 60px;
   }
-  div.innerConnection div.innerConnectionInfo {
+  div.connection div.connectionInfo {
     display: inline-block;
     padding-left: 10px;
     vertical-align: top;
   }
-  div.innerConnection div.innerConnectionInfo p.innerName {
-    margin: 0;
-    font-size: 27px;
+  div.connection div.connectionInfo p.connectionName {
+    font-size: 17px;
+    padding: 20px 0 0 5px;
   }
-  div.innerConnection img.innerStatusIcon {
+  div.connection a {
+    padding: 5px;
+    display: inline-block;
+    border: solid 2px #8d8d8d;
+    border-radius: 3%;
+    font-size: 0.6em;
+    width: 18%;
+    letter-spacing: 3px;
+    margin: 10px 1% 0 0;
     float: right;
-    width: 80px;
-  }
-  div.innerConnection div.innerButtons {
-    padding: 15px 0;
+    text-decoration: none;
     text-align: center;
+  }
+  div.connection a:hover {
+    color: #c2bebe;
+    border-color: #03F9AD;
+  }
+  section#profileWrap {
     display: none;
   }
-  div.innerConnection div.innerButtons a {
-    padding: 9px;
+  section#profileWrap .about {
+    background: url(../images/peeps.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  section#profileWrap .about img#profileImage {
+    width: 115px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #8d8d8d;
+    box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+    -moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+    -webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+    position: relative;
+    bottom: -38px;
+  }
+  section#profileWrap .personalInfo {
+    text-align: center;
+    background: blue;
+  }
+  section#profileWrap .personalInfo #profileName {
+    font-size: 27px;
+    letter-spacing: 3px;
+    margin: 7px 0 0;
+    font-family: antonio-regular, helvetica, arial, sans-serif;
+  }
+  section#profileWrap .personalInfo #profileProfession {
+    font-family: antonio-regular, helvetica, arial, sans-serif;
+    font-size: 21px;
+    letter-spacing: 5px;
+    margin: 0;
+  }
+  section#profileWrap .personalInfo #profileLocation {
+    font-family: antonio-light, helvetica, arial, sans-serif;
+    font-size: 19px;
+    letter-spacing: 5px;
+    margin: 0;
+  }
+  section#profileWrap h3 {
+    text-align: center;
+    font-size: 19px;
+    padding: 15px 0 0;
+    margin-bottom: 0;
+    letter-spacing: 7px;
+    border-top: solid 1px #8d8d8d;
+  }
+  section#profileWrap .profileStatus {
+    text-align: center;
+    width: 50%;
+    float: left;
+  }
+  section#profileWrap .profileStatus h2 {
+    color: #c2bebe;
+    margin-bottom: 0;
+    font-size: 27px;
+    font-family: antonio-regular, helvetica, arial, sans-serif;
+  }
+  section#profileWrap .profileStatus img {
+    width: 125px;
+    height: auto;
+  }
+  section#profileWrap .editButton {
+    padding: 20px 0;
+    text-align: center;
+    clear: both;
+  }
+  section#profileWrap .editButton a {
+    padding: 7px;
     display: inline-block;
     border-radius: 3px;
     border: solid 2px #8d8d8d;
     text-decoration: none;
-    font-size: 17px;
-    width: 25%;
-    letter-spacing: 3px;
+    font-size: 13px;
+    width: 160px;
+    letter-spacing: 7px;
     margin: 0 2%;
   }
-  div.innerConnection div.innerButtons a:hover {
+  section#profileWrap .editButton a:hover {
     background-color: rgba(56, 56, 56, 0.4);
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -777,5 +826,4 @@ section#editProfile .editWrap div.divider {
     color: #c2bebe;
     border-color: #03F9AD;
   }
-
 }

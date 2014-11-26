@@ -512,7 +512,7 @@ div.connection img:hover,div.innerConnection img:hover{
 	-moz-transition: all 1s ease-in-out;
 	-o-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
-	}
+}
 section#profileWrap{
 	width:100%;
 	max-width: 1170px;
@@ -707,51 +707,127 @@ section#editProfile{
 
 /////////////////////// MEDIA QUERIES /////////////////////////////
 
-@media all and (max-width: 550px) and (min-width: 200px), (min-width: 1151px) {
-	div.innerConnection{
-		position: relative;
+@media screen and (max-width: 500px){
+	div.connection{
 		padding: 10px 5px 5px;
-		border-bottom: 1px solid #8d8d8d;
-		background: -moz-linear-gradient(top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.25)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
-		background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 		img{
 			display: inline-block;
-			border-radius: 50px;
-			width:50px;
+			border-radius: 50%;
+			float: left;
+			margin-left:1%;
+			width:60px;
 		}
-		div.innerConnectionInfo{
+		div.connectionInfo{
 			display: inline-block;
 			padding-left: 10px;
 			vertical-align: top;
-			p.innerName{
-				margin: 0;
-				font-size: 27px;
+			p.connectionName{
+				font-size: 17px;
+				padding: 20px 0 0 5px;
 			}
-
 		}
-		img.innerStatusIcon{
+		a{
+			padding: 5px;
+			display: inline-block;
+			border: solid 2px #8d8d8d;
+			border-radius: 3%;
+			font-size: 0.6em;
+			width: 18%;
+			letter-spacing: 3px;
+			margin: 10px 1% 0 0;
 			float: right;
-			width: 80px;
-		}
-
-		div.innerButtons{
-			padding: 15px 0;
+			text-decoration: none;
 			text-align: center;
-			display:none;
+		}
+		a:hover{
+			color: #c2bebe;
+			border-color: #03F9AD;
+		}
+	}
+
+	// ----------------------- PROFILE  --------------------->
+
+
+	section#profileWrap{
+		display:none;
+		.about {
+			background:url(../images/peeps.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position:bottom center;
+			text-align: center;
+			margin-bottom: 50px;
+			img#profileImage{
+				width: 115px;
+				height: auto;
+				margin: 0 auto;
+				border-radius: 50%;
+				border: 2px solid #8d8d8d;
+				box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3-);
+				-moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+				-webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
+				position:relative;
+				bottom:-38px;
+			}
+		}
+		.personalInfo{
+			text-align: center;
+			background:blue;
+			#profileName{
+				font-size: 27px;
+				letter-spacing: 3px;
+				margin: 7px 0 0;
+				font-family: antonio-regular, helvetica, arial, sans-serif;
+			}
+			#profileProfession{
+				font-family: antonio-regular, helvetica, arial, sans-serif;
+				font-size: 21px;
+				letter-spacing: 5px;
+				margin:0;
+			}
+			#profileLocation{
+				font-family: antonio-light, helvetica, arial, sans-serif;
+				font-size:19px;
+				letter-spacing: 5px;
+				margin:0;
+			}
+		}
+		h3{
+			text-align: center;
+			font-size: 19px;
+			padding:15px 0 0;
+			margin-bottom: 0;
+			letter-spacing: 7px;
+			border-top: solid 1px #8d8d8d;
+		}
+		.profileStatus{
+			text-align: center;
+			width:50%;
+			float:left;
+			h2{
+				color: #c2bebe;
+				margin-bottom:0;
+				font-size:27px;
+				font-family: antonio-regular, helvetica, arial, sans-serif;
+			}
+			img{
+				width:125px;
+				height:auto;
+			}
+		}
+		.editButton{
+				padding: 20px 0;
+				text-align: center;
+				clear:both;
 			a{
-				padding: 9px;
+				padding: 7px;
 				display: inline-block;
 				border-radius: 3px;
 				border: solid 2px #8d8d8d;
 				text-decoration: none;
-				font-size: 17px;
-				width: 25%;
-				letter-spacing: 3px;
+				font-size: 13px;
+				width: 160px;
+				letter-spacing: 7px;
 				margin: 0 2%;
 			}
 			a:hover{
@@ -765,13 +841,9 @@ section#editProfile{
 			}
 		}
 	}
-	
 
 
 }
-
-
-
 
 
 
