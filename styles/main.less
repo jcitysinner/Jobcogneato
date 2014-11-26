@@ -707,7 +707,31 @@ section#editProfile{
 
 /////////////////////// MEDIA QUERIES /////////////////////////////
 
-@media screen and (max-width: 500px){
+@media screen and(min-width: 200px) and (max-width: 500px){
+	
+	// ----------------------- NAV --------------------->
+
+	nav{
+		height:35px;
+		img.logo{
+			height: auto;
+			vertical-align: bottom;
+			width: 100px;
+			margin-top: 7px;
+		}
+		a{
+			color: #fff;
+			vertical-align: sub;
+			img{
+				height: 35px;
+			}
+		}
+		a#simple-menu{
+			line-height: 0;
+		}
+	}
+
+
 	div.connection{
 		padding: 10px 5px 5px;
 		img{
@@ -749,7 +773,10 @@ section#editProfile{
 
 
 	section#profileWrap{
-		display:none;
+		background:url(../images/bg.png);height:100%;
+		opacity:0.6;
+		.wrapperSmall{
+		}
 		.about {
 			background:url(../images/peeps.jpg);
 			background-repeat: no-repeat;
@@ -760,42 +787,34 @@ section#editProfile{
 			img#profileImage{
 				width: 115px;
 				height: auto;
-				margin: 0 auto;
-				border-radius: 50%;
-				border: 2px solid #8d8d8d;
-				box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3-);
-				-moz-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
-				-webkit-box-shadow: 6px 6px 17px 3px rgba(2, 33, 46, 0.3);
-				position:relative;
 				bottom:-38px;
 			}
 		}
 		.personalInfo{
 			text-align: center;
-			background:blue;
 			#profileName{
-				font-size: 27px;
+				font-size: 23px;
 				letter-spacing: 3px;
-				margin: 7px 0 0;
-				font-family: antonio-regular, helvetica, arial, sans-serif;
+				margin: 5px 0 0;
+				font-family: antonio-bold, helvetica, arial, sans-serif;
 			}
 			#profileProfession{
 				font-family: antonio-regular, helvetica, arial, sans-serif;
-				font-size: 21px;
-				letter-spacing: 5px;
-				margin:0;
+				font-size: 15px;
+				letter-spacing: 2px;
+				margin: 0;
 			}
 			#profileLocation{
 				font-family: antonio-light, helvetica, arial, sans-serif;
-				font-size:19px;
-				letter-spacing: 5px;
+				font-size:13px;
+				letter-spacing: 2px;
 				margin:0;
 			}
 		}
 		h3{
 			text-align: center;
-			font-size: 19px;
-			padding:15px 0 0;
+			font-size: 13px;
+			padding:7px 0 3px;
 			margin-bottom: 0;
 			letter-spacing: 7px;
 			border-top: solid 1px #8d8d8d;
@@ -806,13 +825,16 @@ section#editProfile{
 			float:left;
 			h2{
 				color: #c2bebe;
-				margin-bottom:0;
-				font-size:27px;
+				margin:5px;
+				font-size:21px;
 				font-family: antonio-regular, helvetica, arial, sans-serif;
 			}
 			img{
-				width:125px;
+				width:60px;
 				height:auto;
+			}
+			p#profileTrueDesc, p#profileGlobalDesc{
+				margin-top:0;
 			}
 		}
 		.editButton{
@@ -829,15 +851,6 @@ section#editProfile{
 				width: 160px;
 				letter-spacing: 7px;
 				margin: 0 2%;
-			}
-			a:hover{
-				background-color: rgba(56, 56, 56, 0.4); 
-				-webkit-transition: all 0.3s ease-in-out;
-				-moz-transition: all 0.3s ease-in-out;
-				-o-transition: all 0.3s ease-in-out;
-				transition: all 0.3s ease-in-out;
-				color:#c2bebe;
-				border-color: #03F9AD;
 			}
 		}
 	}
