@@ -106,7 +106,6 @@ div#messageBox{
 }
 	
 
-
 div#connections{
 	display: none;
 	input#searchInput{
@@ -785,11 +784,12 @@ h2#navHeader{
 			display: inline-block;
 			border: solid 2px #8d8d8d;
 			border-radius: 3%;
-			font-size: 0.6em;
+			font-size: 0.7em;
 			width: 18%;
-			letter-spacing: 3px;
-			margin: 10px 1% 0 0;
+			letter-spacing: 1px;
+			margin: 0px 1% 0 0;
 			float: right;
+			line-height: 14px;
 			text-decoration: none;
 			text-align: center;
 		}
@@ -884,6 +884,97 @@ h2#navHeader{
 			}
 		}
 	}
+	div#innerCircle{
+			p{
+				padding:10px;
+				font-size: 17px;
+			}
+		}
+		div.connection img, div.innerConnection img{
+			width:60px;
+			height:auto;
+		}
+		img.innerStatusIcon{
+			float: right;
+			width: 60px;
+		}
+		//message box
+		div#messageBox{
+			width: 90%;
+			height: 300px;
+			padding: 10px;
+		h1{
+			font-size: 27px;
+		}
+		textarea{
+			width: 100%;
+			height:75px;
+			width: 100%;
+			height: 100px;
+			font-size: 17px;
+		}
+		div#messageButtons{
+			text-align: center;
+			margin-top: 25px;
+			a{
+				width: 31%;
+				margin-top: 0;
+				color: #8d8d8d;
+				text-decoration: none;
+				padding: 9px;
+				display: inline-block;
+				border-radius: 3px;
+				border: solid 2px #8d8d8d;
+				font-size: 19px;
+				letter-spacing: 6px;
+				font-family: antonio-light, helvetica, arial, sans-serif;
+			}
+			a.sender{
+				width:67%;
+				margin-left:2%;
+			}
+		}
+	}
+	div#connections{
+	display: none;
+	input#searchInput{
+		width: 71%;
+		font-size: 15px;
+		background: #222;
+		padding: 3px 10px 2px 4px;
+		margin: 3px;
+	}
+	input[type="text"]:focus {
+		color: #fff;
+		background:#000;
+		border: solid 3px #03F9AD;
+		outline: 0px;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		}
+		a#searchSubmit{
+			padding: 2px 10px;
+			display: inline-block;
+			border-radius: 3px;
+			border: solid 2px #8d8d8d;
+			text-decoration: none;
+			font-size: 17px;
+			width: 80px;
+			letter-spacing: 3px;
+			margin: 0;
+			&:hover{
+				background-color: rgba(56, 56, 56, 0.4); 
+				-webkit-transition: all 0.3s ease-in-out;
+				-moz-transition: all 0.3s ease-in-out;
+				-o-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+				color:#c2bebe;
+				border-color: #03F9AD;
+			}
+		}
+	}
+
 
 
 }
