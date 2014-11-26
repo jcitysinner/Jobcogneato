@@ -746,12 +746,12 @@ h2#navHeader {
 }
 @media screen and (min-width: 200px) and (max-width: 500px) {
   nav {
-    height: 35px;
+    height: 50px;
   }
   nav img.logo {
     height: auto;
     vertical-align: bottom;
-    width: 100px;
+    width: 90px;
     margin-top: 7px;
   }
   nav a {
