@@ -172,7 +172,10 @@ nav img.logo {
   vertical-align: bottom;
   cursor: pointer;
   width: 175px;
+  float: left;
   margin-top: 5px;
+  position: relative;
+  z-index: 10;
 }
 nav a {
   color: #fff;
@@ -183,6 +186,7 @@ nav a img {
 }
 nav a#simple-menu {
   line-height: 0;
+  postion: relative;
 }
 div.connection {
   padding: 10px 5px 5px;
@@ -300,6 +304,7 @@ div.innerConnection div.innerButtons a:hover {
 }
 div#contactsNav {
   width: 100%;
+  max-width: 1400px;
   background-color: #383838;
   position: fixed;
   border-top: 1px #8d8d8d solid;
@@ -383,15 +388,15 @@ div#setStatus a img {
   margin-bottom: 5px;
 }
 div#setStatus a#looking:hover,
-div#setStatus a#lookingTrue.hover {
+div#setStatus a#lookingTrue:hover {
   color: #03F9AD;
 }
 div#setStatus a#interest:hover,
-div#setStatus a#interestTrue.hover {
+div#setStatus a#interestTrue:hover {
   color: #DCF908;
 }
 div#setStatus a#happy:hover,
-div#setStatus a#happyTrue.hover {
+div#setStatus a#happyTrue:hover {
   color: #F73C03;
 }
 div.signUpForm {
@@ -473,15 +478,15 @@ div.signUpForm div.statusContainer a:hover {
   background-color: rgba(0, 0, 0, 0);
 }
 div.signUpForm div.statusContainer a#looking:hover,
-div.signUpForm div.statusContainer a#lookingTrue.hover {
+div.signUpForm div.statusContainer a#lookingTrue:hover {
   color: #31eccb;
 }
 div.signUpForm div.statusContainer a#interest:hover,
-div.signUpForm div.statusContainer a#interestTrue.hover {
+div.signUpForm div.statusContainer a#interestTrue:hover {
   color: #eed609;
 }
 div.signUpForm div.statusContainer a#happy:hover,
-div.signUpForm div.statusContainer a#happyTrue.hover {
+div.signUpForm div.statusContainer a#happyTrue:hover {
   color: #ec7331;
 }
 div.signUpForm .top {
@@ -595,6 +600,7 @@ section#profileWrap .editButton a {
   width: 160px;
   letter-spacing: 7px;
   margin: 0 2%;
+  cursor: pointer;
 }
 section#profileWrap .editButton a:hover {
   background-color: rgba(56, 56, 56, 0.4);
@@ -611,7 +617,7 @@ section#editProfile .editWrap {
   margin: 0 auto;
 }
 section#editProfile .editWrap input {
-  width: 96%;
+  width: 100%;
   padding: 10px;
   border-radius: 3px;
   background: transparent;
@@ -648,15 +654,15 @@ section#editProfile .editWrap div.statusContainer a:hover {
   background-color: rgba(0, 0, 0, 0);
 }
 section#editProfile .editWrap div.statusContainer a#looking:hover,
-section#editProfile .editWrap div.statusContainer a#lookingTrue.hover {
+section#editProfile .editWrap div.statusContainer a#lookingTrue:hover {
   color: #31eccb;
 }
 section#editProfile .editWrap div.statusContainer a#interest:hover,
-section#editProfile .editWrap div.statusContainer a#interestTrue.hover {
+section#editProfile .editWrap div.statusContainer a#interestTrue:hover {
   color: #eed609;
 }
 section#editProfile .editWrap div.statusContainer a#happy:hover,
-section#editProfile .editWrap div.statusContainer a#happyTrue.hover {
+section#editProfile .editWrap div.statusContainer a#happyTrue:hover {
   color: #ec7331;
 }
 section#editProfile .editWrap div.statusContainer img {
@@ -695,6 +701,30 @@ section#editProfile .editWrap div.statusContainer a#editProfileSubmit:hover {
 }
 section#editProfile .editWrap div.divider {
   border-top: solid 1px #8d8d8d;
+}
+a#sendThisUserMessage {
+  padding: 9px;
+  display: block;
+  border-radius: 3px;
+  border: solid 2px #8d8d8d;
+  text-decoration: none;
+  font-size: 17px;
+  width: 100%;
+  letter-spacing: 3px;
+  margin: 0 2%;
+  text-align: center;
+  cursor: pointer;
+}
+a#sendThisUserMessage:hover {
+  transition: all 0.3s ease-in-out;
+  color: #c2bebe;
+  border-color: #03F9AD;
+}
+h2#navHeader {
+  position: inherit;
+  width: 96%;
+  text-align: center;
+  margin: 0 auto;
 }
 @media screen and (min-width: 200px) and (max-width: 500px) {
   nav {
