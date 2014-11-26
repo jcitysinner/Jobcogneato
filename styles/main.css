@@ -162,7 +162,6 @@ nav {
   overflow: hidden;
   position: fixed;
   width: 100%;
-  max-width: 1400px;
   margin: auto;
   z-index: 100;
   display: none;
@@ -696,4 +695,68 @@ section#editProfile .editWrap div.statusContainer a#editProfileSubmit:hover {
 }
 section#editProfile .editWrap div.divider {
   border-top: solid 1px #8d8d8d;
+}
+@media all and (max-width: 550px) and (min-width: 200px), (min-width: 1151px) {
+  div.innerConnection {
+    position: relative;
+    padding: 10px 5px 5px;
+    border-bottom: 1px solid #8d8d8d;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+    /* IE6-9 */
+  }
+  div.innerConnection img {
+    display: inline-block;
+    border-radius: 50px;
+    width: 50px;
+  }
+  div.innerConnection div.innerConnectionInfo {
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: top;
+  }
+  div.innerConnection div.innerConnectionInfo p.innerName {
+    margin: 0;
+    font-size: 27px;
+  }
+  div.innerConnection img.innerStatusIcon {
+    float: right;
+    width: 80px;
+  }
+  div.innerConnection div.innerButtons {
+    padding: 15px 0;
+    text-align: center;
+    display: none;
+  }
+  div.innerConnection div.innerButtons a {
+    padding: 9px;
+    display: inline-block;
+    border-radius: 3px;
+    border: solid 2px #8d8d8d;
+    text-decoration: none;
+    font-size: 17px;
+    width: 25%;
+    letter-spacing: 3px;
+    margin: 0 2%;
+  }
+  div.innerConnection div.innerButtons a:hover {
+    background-color: rgba(56, 56, 56, 0.4);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    color: #c2bebe;
+    border-color: #03F9AD;
+  }
 }
