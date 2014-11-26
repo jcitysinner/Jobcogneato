@@ -86,12 +86,13 @@
 		.sidr ul li img#menuProfilePic{
 			margin: 0px 10px 0px 0;
 			width: 30px;
+			border-radius:50%;
 			height:auto;
 			filter: grayscale(10%);
 			filter: url(#greyscale);
 			filter: gray;
 			-webkit-filter: grayscale(1);
-			border:solid 1px #8d8d8d;
+			border:solid 2px #8d8d8d;
 			vertical-align: middle;
 
 		}

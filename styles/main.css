@@ -14,13 +14,10 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
-
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
-
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -177,9 +174,6 @@ nav img.logo {
   cursor: pointer;
   width: 175px;
   margin-top: 5px;
-  float: left;
-  position: relative;
-  z-index: 10;
 }
 nav a {
   color: #fff;
@@ -190,7 +184,6 @@ nav a img {
 }
 nav a#simple-menu {
   line-height: 0;
-  position: relative;
 }
 div.connection {
   padding: 10px 5px 5px;
@@ -198,25 +191,18 @@ div.connection {
   overflow: hidden;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
-
 }
 div.connection img {
   display: inline-block;
@@ -258,25 +244,18 @@ div.innerConnection {
   border-bottom: 1px solid #8d8d8d;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
-
 }
 div.innerConnection img {
   display: inline-block;
@@ -322,7 +301,6 @@ div.innerConnection div.innerButtons a:hover {
 }
 div#contactsNav {
   width: 100%;
-  max-width: 1400px;
   background-color: #383838;
   position: fixed;
   border-top: 1px #8d8d8d solid;
@@ -406,15 +384,15 @@ div#setStatus a img {
   margin-bottom: 5px;
 }
 div#setStatus a#looking:hover,
-div#setStatus a#lookingTrue:hover {
+div#setStatus a#lookingTrue.hover {
   color: #03F9AD;
 }
 div#setStatus a#interest:hover,
-div#setStatus a#interestTrue:hover {
+div#setStatus a#interestTrue.hover {
   color: #DCF908;
 }
 div#setStatus a#happy:hover,
-div#setStatus a#happyTrue:hover {
+div#setStatus a#happyTrue.hover {
   color: #F73C03;
 }
 div.signUpForm {
@@ -618,7 +596,6 @@ section#profileWrap .editButton a {
   width: 160px;
   letter-spacing: 7px;
   margin: 0 2%;
-  cursor: pointer;
 }
 section#profileWrap .editButton a:hover {
   background-color: rgba(56, 56, 56, 0.4);
@@ -635,7 +612,7 @@ section#editProfile .editWrap {
   margin: 0 auto;
 }
 section#editProfile .editWrap input {
-  width: 100%;
+  width: 96%;
   padding: 10px;
   border-radius: 3px;
   background: transparent;
@@ -719,38 +696,4 @@ section#editProfile .editWrap div.statusContainer a#editProfileSubmit:hover {
 }
 section#editProfile .editWrap div.divider {
   border-top: solid 1px #8d8d8d;
-}
-
-img#menuProfilePic{
-  border-radius: 50%;
-}
-
-a#sendThisUserMessage{
-  
-  padding: 9px;
-  display: block;
-  border-radius: 3px;
-  border: solid 2px #8d8d8d;
-  text-decoration: none;
-  font-size: 17px;
-  width: 100%;
-  letter-spacing: 3px;
-  margin: 0 2%;
-  text-align: center;
-  cursor: pointer;
-
-}
-a#sendThisUserMessage:hover{
-
-  transition: all 0.3s ease-in-out;
-  color: #c2bebe;
-  border-color: #03F9AD;
-
-}
-
-h2#navHeader{
-  position: inherit;
-  width: 96%;
-  text-align: center;
-  margin: 0 auto;
 }
