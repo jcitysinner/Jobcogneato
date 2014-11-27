@@ -789,7 +789,7 @@
 				$('#profileTrue').remove();
 				$('#editProfile').remove();
 
-				$('<a id="sendThisUserMessage" onclick="sendMessage('+ "'" + id + "'" +')"">Send Message</a>').appendTo('.wrapperSmall');
+				$('<a id="sendThisUserMessage" onclick="sendMessage('+ "'" + id + "'" +')"">Message</a>').appendTo('.wrapperSmall');
 
 			});
 
@@ -895,7 +895,7 @@
 
 	function sendInvite (memberId) {
 
-		$('body').append('<div id="blocker"><div id="messageBox"><p>This user hasn&#39;t signed up for Jobcognito, send them an invite?<textarea id="sendMessage">I want to add you to my Inner Circle on Jobcognito, you should check it out! www.Jobcognito.com!</textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Not Now</a><a href="#" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
+		$('body').append('<div id="blocker"><div id="messageBox"><p>This person hasn&#39;t joined yet, send them an invite?<textarea id="sendMessage">Hey, I&#39;ve joined Jobcognito - you should check it out! www.Jobcognito.com!</textarea><div id="messageButtons"><a href="#" onclick="closeMessage()">Not Now</a><a href="#" onclick="messageSent(' + "'" + memberId + "'" +')">Send</a></div></div></div>');
 
 	}
 
