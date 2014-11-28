@@ -14,10 +14,13 @@
 * {
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
+
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
+
   box-sizing: border-box;
   /* Opera/IE 8+ */
+
   text-transform: uppercase;
   font-family: antonio-light, helvetica, arial, sans-serif;
   color: #8d8d8d;
@@ -104,11 +107,11 @@ div#connections {
   display: none;
 }
 div#connections input#searchInput {
-  width: 90%;
+  width: 82%;
   font-size: 15px;
   background: #222;
   padding: 3px 10px 2px 4px;
-  margin: 10px;
+  margin: 10px 1%;
   letter-spacing: 1px;
 }
 div#connections input[type="text"]:focus {
@@ -127,8 +130,9 @@ div#connections a#searchSubmit {
   border: solid 2px #8d8d8d;
   text-decoration: none;
   font-size: 17px;
-  width: 80px;
+  width: 15%;
   letter-spacing: 3px;
+  text-align: center;
   margin: 0;
 }
 div#connections a#searchSubmit:hover {
@@ -195,18 +199,25 @@ div.connection {
   overflow: hidden;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
+
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
+
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
+
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
+
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
+
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
+
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
+
 }
 div.connection img {
   display: inline-block;
@@ -248,18 +259,25 @@ div.innerConnection {
   border-bottom: 1px solid #8d8d8d;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
+
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
+
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
+
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
+
   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
+
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
+
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */
+
 }
 div.innerConnection img {
   display: inline-block;
