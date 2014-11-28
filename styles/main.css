@@ -172,6 +172,17 @@ nav {
   display: none;
   border-bottom: solid 1px #8d8d8d;
 }
+nav img.logoTie {
+  height: auto;
+  vertical-align: bottom;
+  cursor: pointer;
+  width: 20px;
+  float: left;
+  margin-top: 5px;
+  position: relative;
+  z-index: 10;
+  display: none;
+}
 nav img.logo {
   height: auto;
   vertical-align: bottom;
@@ -759,10 +770,13 @@ h2#navHeader {
     height: 45px;
   }
   nav img.logo {
+    display: none;
+  }
+  nav img.logoTie {
     height: auto;
-    vertical-align: bottom;
-    width: 90px;
-    margin-top: 7px;
+    width: 25px;
+    margin: -4px 0 0 5%;
+    display: block;
   }
   nav a {
     color: #fff;
