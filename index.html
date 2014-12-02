@@ -531,6 +531,9 @@
 		}
 
 		function setStatus (status) {
+
+			window.userGlobalStatus = status;
+
 			var User = Parse.Object.extend("users");
 			var query = new Parse.Query(User);
 			query.get(window.userObjectId,{
@@ -574,6 +577,9 @@
 		}
 
 		function setTrueStatus(status){
+
+			window.userTrueStatus = status;
+
 			var User = Parse.Object.extend("users");
 			var query = new Parse.Query(User);
 			query.get(window.userObjectId,{
