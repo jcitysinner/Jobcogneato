@@ -85,7 +85,7 @@
 
 		function onLinkedInAuth() {
 
-			$('nav').show();
+			
 			IN.API.Profile("me")
 			    .fields(["id", "firstName", "lastName", "pictureUrl", "positions:(title)", "location:(name)"])
 			    .result(function(result) {
@@ -164,7 +164,7 @@
 
 							if (results[0].get('isSetup')){
 
-								
+								$('nav').show();
 
 								if (window.notificationCounter > 0){
 
@@ -308,8 +308,20 @@
 				    })
 
 				    $('.innerConnection').click(function(event){
-				    	console.log(event.target.id);
 				    	targetId = event.target.id;
+				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+				    })
+				    $('.innerStatusIcon').click(function(event){
+				    	target = $(event.target).parent();
+				    	targetId = $(target).attr('id');
+				    	console.log(targetId);
+				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+				    })
+				    $('.innerConnectionInfo').click(function(event){
+				    	targetParent = $(event.target).parent();
+				    	target = $(targetParent).parent();
+				    	targetId = $(target).attr('id');
+				    	console.log('Target ID: ' + targetId);
 				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
 				    })
 
