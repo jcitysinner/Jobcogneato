@@ -98,8 +98,8 @@
 
 			function addToDatabase (profile) {
 
-				//window.userPositionPlaceholder = profile.positions.values[0].title;
-				//window.userLocationPlaceholder = profile.location.name;
+				window.userPositionPlaceholder = profile.positions.values[0].title || "";
+				window.userLocationPlaceholder = profile.location.name || "";
 
 				$('#navHeader').text('Connections');
 
@@ -137,6 +137,8 @@
 									console.log(window.userObjectId);
 									$("#container").load("setup.html", function(){
 										$('#navHeader').text('Setup');
+										$('#professionSignUp').val(window.userPositionPlaceholder);
+										$('#locationSignUp').val(window.userLocationPlaceholder);
 									});
 								}
 							})
