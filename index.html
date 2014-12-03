@@ -101,8 +101,6 @@
 				//window.userPositionPlaceholder = profile.positions.values[0].title;
 				//window.userLocationPlaceholder = profile.location.name;
 
-				$("#container").load("connections.html", function(){
-
 				$('#navHeader').text('Connections');
 
 				window.userId = profile.id;
@@ -165,6 +163,7 @@
 							if (results[0].get('isSetup')){
 
 								$('nav').show();
+								$("#container").load("connections.html");
 
 								if (window.notificationCounter > 0){
 
@@ -197,7 +196,7 @@
 					}
 				})
 			
-				});
+				
 
 				
 			}
