@@ -98,8 +98,8 @@
 
 			function addToDatabase (profile) {
 
-				window.userPositionPlaceholder = profile.positions.values[0].title;
-				window.userLocationPlaceholder = profile.location.name;
+				//window.userPositionPlaceholder = profile.positions.values[0].title;
+				//window.userLocationPlaceholder = profile.location.name;
 
 				$("#container").load("connections.html", function(){
 
@@ -447,6 +447,7 @@
 		  }
 
 		  if (window.innerCircleList.length <= 0){
+		  	$('#loader').hide();
 		  	document.getElementById('innerCircle').innerHTML += '<p class="noInnerList">You don&#146;t have anyone in your Inner Circle. Click on Connections below add the people you trust to see your true status.</p>';
 		  }   
 		  //});
