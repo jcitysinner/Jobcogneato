@@ -293,6 +293,8 @@
 
 					console.log(userParams);
 
+					$('#loader').hide();
+
 					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a onclick='toThisUserProfile(" + userParams + ")'>Profile</a><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove</a></div></div>";
 
 					if (theirTrueCircle.indexOf(window.userId) >=0){

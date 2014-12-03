@@ -760,6 +760,10 @@ h2#navHeader {
   text-align: center;
   margin: 0 auto;
 }
+#loaderDiv {
+  width: 100%;
+  text-align: center;
+}
 @media screen and (min-width: 200px) and (max-width: 500px) {
   div#innerCircle {
     padding-bottom: 69px;
