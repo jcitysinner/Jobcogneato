@@ -74,6 +74,7 @@
 		var userTrueStatus;
 		var innerCircleList = [];
 		var trueCircleList = [];
+		var innerCircleStats = [];
 		var notificationCounter;
 		var userPositionPlaceholder;
 		var userLocationPlaceholder;
@@ -82,9 +83,26 @@
 
 	    //---------------------------------------- LinkedIn CODE ----------------------------------------
 		
+	    function test(){
+	 		IN.API.Profile(innerCircleList).result(profilesList);
+
+	 		function profilesList(profiles){
+	 			console.log(innerCircleList)
+	 			console.log(profiles);
+
+	 			for (i = 0; i < profiles.values.length; i++){
+	 				console.log("TEST");
+	 				innerCircleStats.push({fname: profiles.values[i].firstName});
+	 			}
+
+	 			console.log(innerCircleStats);
+
+	 		}
+	    }
 
 		function onLinkedInAuth() {
 
+			innerCircleStats = [];
 			
 			IN.API.Profile("me")
 			    .fields(["id", "firstName", "lastName", "pictureUrl", "positions:(title)", "location:(name)"])
@@ -251,84 +269,145 @@
 
 		function displayInnerCircle() {
 
+			// console.log(window.innerCircleList);
+			// for (var i = 0; i < window.innerCircleList.length; i++){
+			// 	IN.API.Profile(window.innerCircleList[i]).result(populateInnerCircle);
+			// }
+
+			IN.API.Profile(innerCircleList).result(populateInnerCircle);
+
+
+
+		}
+		function populateInnerCircle(profiles){
+			//var member = profiles.values[0];
+
+			for (i = 0; i < profiles.values.length; i++){
+ 				var pictureUrl = profiles.values[i].pictureUrl || "images/anon.png";
+
+ 				innerCircleStats.push({id: profiles.values[i].id, url: pictureUrl, fname: profiles.values[i].firstName, lname: profiles.values[i].lastName, gStatus: '', tStatus: '', prof: '', loc: ''});
+ 			}
+
+			var innerCircleDiv = document.getElementById("innerCircle");
+
+			var User = Parse.Object.extend("users");
+			var query = new Parse.Query(User);
+			query.containedIn("userId", innerCircleList);
+			query.find({
+				success: function (results) {
+					for (i = 0; i < results.length; i++){
+						var pos = innerCircleList.indexOf(results[i].get('userId'));
+						var gStat = results[i].get('status');
+						var tStat = results[i].get('trueStatus');
+						var theirProf = results[i].get('profession') || 'Profession Not Set';
+						var theirLoc = results[i].get('location') || 'Location Not Set';
+
+						innerCircleStats[pos].gStatus = gStat;
+						innerCircleStats[pos].tStatus = tStat;
+						innerCircleStats[pos].prof = theirProf;
+						innerCircleStats[pos].loc = theirLoc;
+					}
+
+					for (j = 0; j < innerCircleStats.length; j++){
+						var inTrueCircle = trueCircleList.indexOf(innerCircleStats[j].id);
+						if (inTrueCircle >= 0){
+							var memberStatus = innerCircleStats[j].tStatus;
+						} else {
+							var memberStatus = innerCircleStats[j].gStatus;
+						}
+
+						var userParams = '"' + innerCircleStats[j].id + '", "' + innerCircleStats[j].url + '", "' + innerCircleStats[j].fname + '", "' + innerCircleStats[j].lname + '",' + memberStatus + ',"' + innerCircleStats[j].prof + '","' + innerCircleStats[j].loc  + '"';
+
+						innerCircleDiv.innerHTML += "<div id='"+ innerCircleStats[j].id +"' class='innerConnection'><img src='"+ innerCircleStats[j].url +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + innerCircleStats[j].fname+ " " + innerCircleStats[j].lname + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a onclick='toThisUserProfile(" + userParams + ")'>Profile</a><a href='#' onclick='sendMessage(" + '"' + innerCircleStats[j].id + '"' + ")'>Message</a><a href='#' onclick='removeInner(" + '"' + innerCircleStats[j].id + '"' + ")'>Remove</a></div></div>";
+
+
+						$('a').click(function(event){
+					    	event.preventDefault();
+					    })
+
+					    $('.innerConnection').click(function(event){
+					    	targetId = event.target.id;
+					    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+					    })
+					    $('.innerStatusIcon').click(function(event){
+					    	target = $(event.target).parent();
+					    	targetId = $(target).attr('id');
+					    	console.log(targetId);
+					    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+					    })
+					    $('.innerConnectionInfo').click(function(event){
+					    	targetParent = $(event.target).parent();
+					    	target = $(targetParent).parent();
+					    	targetId = $(target).attr('id');
+					    	console.log('Target ID: ' + targetId);
+					    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+					    })
+
+
+						$('#loader').hide();
+					}
+				}
+			});
 
 
 			// var User = Parse.Object.extend("users");
 			// var query = new Parse.Query(User);
-			// query.get(window.userObjectId,{
-			// 	success: function(user){
-			console.log(window.innerCircleList);
-			for (var i = 0; i < window.innerCircleList.length; i++){
-				IN.API.Profile(window.innerCircleList[i]).result(populateInnerCircle);
-			}
-					
-			// 	},
-			// });
-		}
-		function populateInnerCircle(profiles){
-			var member = profiles.values[0];
-			var pictureUrl = member.pictureUrl || "images/anon.png";
-			var innerCircleDiv = document.getElementById("innerCircle");
+			// query.equalTo("userId", member.id);
+			// query.find({
+			// 	success: function (results) {
+			// 		var inTrueCircle = window.trueCircleList.indexOf(member.id);
+			// 		var theirTrueCircle = results[0].get('trueCircle') || [];
+			// 		var theirProfession = results[0].get('profession') || 'Profession Not Set';
+			// 		var theirLocation = results[0].get('location') || 'Location Not Set';
+			// 		// console.log(inTrueCircle);
+			// 		// console.log(member.id);
+			// 		// console.log(window.trueCircleList);
+			// 		// console.log(window.trueCircleList.indexOf(member.id));
+			// 		if (inTrueCircle >= 0){
+			// 			var memberStatus = results[0].get('trueStatus');
+			// 		} else {
+			// 			var memberStatus = results[0].get('status');
+			// 		}
+
+			// 		var userParams = '"' + member.id + '", "' + pictureUrl + '", "' + member.firstName + '", "' + member.lastName + '",' + memberStatus + ',"' + theirProfession + '","' + theirLocation + '"';
+
+			// 		console.log(userParams);
+
+			// 		$('#loader').hide();
+
+			// 		innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a onclick='toThisUserProfile(" + userParams + ")'>Profile</a><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove</a></div></div>";
+
+			// 		if (theirTrueCircle.indexOf(window.userId) >=0){
+			// 			$('div#' + member.id + ' a.showTrue').hide();
+			// 		} else {
+			// 			$('div#' + member.id + ' a.hideTrue').hide();
+			// 		}
+
+			// 		$('a').click(function(event){
+			// 	    	event.preventDefault();
+			// 	    })
+
+			// 	    $('.innerConnection').click(function(event){
+			// 	    	targetId = event.target.id;
+			// 	    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+			// 	    })
+			// 	    $('.innerStatusIcon').click(function(event){
+			// 	    	target = $(event.target).parent();
+			// 	    	targetId = $(target).attr('id');
+			// 	    	console.log(targetId);
+			// 	    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+			// 	    })
+			// 	    $('.innerConnectionInfo').click(function(event){
+			// 	    	targetParent = $(event.target).parent();
+			// 	    	target = $(targetParent).parent();
+			// 	    	targetId = $(target).attr('id');
+			// 	    	console.log('Target ID: ' + targetId);
+			// 	    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
+			// 	    })
 
 
-			var User = Parse.Object.extend("users");
-			var query = new Parse.Query(User);
-			query.equalTo("userId", member.id);
-			query.find({
-				success: function (results) {
-					var inTrueCircle = window.trueCircleList.indexOf(member.id);
-					var theirTrueCircle = results[0].get('trueCircle') || [];
-					var theirProfession = results[0].get('profession') || 'Profession Not Set';
-					var theirLocation = results[0].get('location') || 'Location Not Set';
-					// console.log(inTrueCircle);
-					// console.log(member.id);
-					// console.log(window.trueCircleList);
-					// console.log(window.trueCircleList.indexOf(member.id));
-					if (inTrueCircle >= 0){
-						var memberStatus = results[0].get('trueStatus');
-					} else {
-						var memberStatus = results[0].get('status');
-					}
-
-					var userParams = '"' + member.id + '", "' + pictureUrl + '", "' + member.firstName + '", "' + member.lastName + '",' + memberStatus + ',"' + theirProfession + '","' + theirLocation + '"';
-
-					console.log(userParams);
-
-					$('#loader').hide();
-
-					innerCircleDiv.innerHTML += "<div id='"+ member.id +"' class='innerConnection'><img src='"+ pictureUrl +"' onclick='toThisUserProfile(" + userParams + ")'><div class='innerConnectionInfo'><p class='innerName'>" + member.firstName + " " + member.lastName + "</p></div><img class='innerStatusIcon' src='" + window.iconsList[memberStatus] + "'><div class='innerButtons'><a onclick='toThisUserProfile(" + userParams + ")'>Profile</a><a href='#' onclick='sendMessage(" + '"' + member.id + '"' + ")'>Message</a><a href='#' onclick='removeInner(" + '"' + member.id + '"' + ")'>Remove</a></div></div>";
-
-					if (theirTrueCircle.indexOf(window.userId) >=0){
-						$('div#' + member.id + ' a.showTrue').hide();
-					} else {
-						$('div#' + member.id + ' a.hideTrue').hide();
-					}
-
-					$('a').click(function(event){
-				    	event.preventDefault();
-				    })
-
-				    $('.innerConnection').click(function(event){
-				    	targetId = event.target.id;
-				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
-				    })
-				    $('.innerStatusIcon').click(function(event){
-				    	target = $(event.target).parent();
-				    	targetId = $(target).attr('id');
-				    	console.log(targetId);
-				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
-				    })
-				    $('.innerConnectionInfo').click(function(event){
-				    	targetParent = $(event.target).parent();
-				    	target = $(targetParent).parent();
-				    	targetId = $(target).attr('id');
-				    	console.log('Target ID: ' + targetId);
-				    	$('#' + targetId + ' div.innerButtons').slideToggle(200);
-				    })
-
-
-				}
-			})
+			// 	}
+			// })
 
 			
 		}
@@ -792,6 +871,8 @@
 		}
 
 		function toThisUserProfile(id, pictureUrl, firstName, lastName, status, profession, location) {
+
+			console.log(location);
 
 			$("#container").load("profile.html", function() {
 
