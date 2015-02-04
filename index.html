@@ -80,6 +80,7 @@
 		var userLocationPlaceholder;
 		var iconsList = ['images/eye.png', 'images/ear.png', 'images/happy.png'];
 		var statusList = ['Looking for a new job', 'listening for opportunities', 'Happy with current job'];
+		var currentConnectionIndex = 0;
 
 	    //---------------------------------------- LinkedIn CODE ----------------------------------------
 		
@@ -200,9 +201,13 @@
 								displayInnerCircle();
 								IN.API.Connections("me")
 								.fields("firstName", "lastName", "industry", "pictureUrl", "id")
+								.params({"start": currentConnectionIndex, "count": currentConnectionIndex + 50})
 								.result(displayConnections)
 								.error(displayConnectionsErrors);
 								document.getElementById('logout').addEventListener('click', logOut);
+
+								currentConnectionIndex += 50;
+								console.log(currentConnectionIndex);
 							} else {
 								console.log(window.userObjectId);
 								$("#container").load("setup.html", function(){
@@ -500,6 +505,17 @@
 			$.sidr('close', 'sidr');
 		}
 
+		function displayMore(){
+			IN.API.Connections("me")
+			.fields("firstName", "lastName", "industry", "pictureUrl", "id")
+			.params({"start": currentConnectionIndex, "count": currentConnectionIndex + 50})
+			.result(displayConnections)
+			.error(displayConnectionsErrors);
+
+			currentConnectionIndex += 50;
+			console.log(currentConnectionIndex);
+		}
+
 		function displayConnections(connections) {
 
 		  //$("#container").load("connections.html", function(){
@@ -546,7 +562,11 @@
 		    
 		}
 
-		function displayConnectionsErrors(error) { /* do nothing */ }
+		function displayConnectionsErrors(error) { 
+
+			console.log(error);
+
+		}
 
 		function addToInner (memberId,fname,lname){
 			var User = Parse.Object.extend("users");
@@ -718,9 +738,14 @@
 		}
 
 		function contactsSwap(list) {
+
+
 			if (list === 'inner'){
 
+				currentConnectionIndex = 0;
+				
 				onLinkedInAuth();
+
 
 				// document.getElementById('inner').className = 'active';
 				// document.getElementById('business').className = '';
